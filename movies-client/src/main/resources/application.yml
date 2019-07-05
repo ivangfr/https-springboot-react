@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: movies-client
+
+http.client.ssl:
+  trust-store: classpath:keystore.p12
+  trust-store-password: secret
+
+movies-api:
+  url: https://localhost:8443/api/movies
