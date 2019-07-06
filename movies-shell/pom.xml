@@ -8,40 +8,37 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mycompany</groupId>
-	<artifactId>movies-client</artifactId>
+	<artifactId>movies-shell</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>movies-client</name>
+	<name>movies-shell</name>
 	<description>Demo project for Spring Boot</description>
 	
 	<properties>
 		<java.version>1.8</java.version>
-		<springfox.version>2.9.2</springfox.version>
+		<spring-shell.version>2.0.1.RELEASE</spring-shell.version>
+		<spring-web.version>5.1.8.RELEASE</spring-web.version>
 		<httpclient.version>4.5.9</httpclient.version>
+		<jackson.version>2.9.9</jackson.version>
 	</properties>
 	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		
-		<!-- Swagger2 -->
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${springfox.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${springfox.version}</version>
+			<groupId>org.springframework.shell</groupId>
+			<artifactId>spring-shell-starter</artifactId>
+			<version>${spring-shell.version}</version>
 		</dependency>
 		
-		<!-- HttpClient -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-web.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -49,14 +46,15 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	

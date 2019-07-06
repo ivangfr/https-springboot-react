@@ -1,9 +1,6 @@
-server:
-  port: 8081
-
 spring:
   application:
-    name: movies-client
+    name: movies-shell
 
 http.client.ssl:
   trust-store: classpath:keystore.p12

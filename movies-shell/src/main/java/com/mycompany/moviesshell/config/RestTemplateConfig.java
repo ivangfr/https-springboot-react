@@ -1,4 +1,4 @@
-package com.mycompany.moviesclient.config;
+package com.mycompany.moviesshell.config;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

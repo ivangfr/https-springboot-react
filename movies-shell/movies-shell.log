@@ -1,0 +1,84 @@
+1562430985240:help
+1562430993491:get-movies
+1562431135099:exit
+1562431148397:get-movies
+1562431284079:exit
+1562431297720:get-movies
+1562431318974:exit
+1562431487467:get-movie
+1562431505047:get-movie --imdb-id tt0120804
+1562431531261:exit
+1562432465867:get-movies
+1562432473666:get-movie
+1562432477497:get-movie --imdb-id tt0120804
+1562432483310:create-movie
+1562432499186:create-movie --imdb-id 1
+1562432532013:create-movie --imdb-id 11 --title 'american pie' --director ivan --year a
+1562432539214:create-movie --imdb-id 11 --title 'american pie' --director ivan --year 2019
+1562433478335:get-movies
+1562433677006:get-movie
+1562433678860:get-movies
+1562433686573:create-movie --imdb-id 11 --title 'american pie' --director ivan --year 2019
+1562433966464:exit
+1562433987526:create-movie --imdb-id 11 --title 'american pie' --director ivan --year 2019
+1562434368782:exit
+1562434418936:create-movie --imdb-id 11 --title 'american pie' --director ivan --year 2019
+1562434427514:get-movies
+1562434438053:delete-movie tt0120804
+1562434441154:get-movies
+1562434463661:help
+1562434483353:clear
+1562434489152:help
+1562434539182:exit
+1562434567668:create-movie 11 american ivan 2019
+1562434608020:get-movies
+1562434613869:create-movie
+1562434622436:exit
+1562434642865:create-movie
+1562435070980:create-movie 1 american ivan 1000
+1562435194497:create-movie 1 american ivan -1
+1562435205004:stacktrace
+1562435265640:create-movie 1 american ivan 2019
+1562435439019:clear
+1562435442183:get-movies
+1562435456572:get-movies 11
+1562435469984:get-movie 11
+1562435480639:delete-movie 11
+1562435485284:get-movies
+1562435501758:create-movie 12 'american pie' ivan 1999
+1562435506086:get-movies
+1562435585778:get-movie 1
+1562435593414:delete-movie --imdb-id 1
+1562435598169:get-movies
+1562435604858:delete-movie 12
+1562435606742:get-movies
+1562435630723:create-movie 1 'resident evil' ivan 1999
+1562435633710:get-movies
+1562435644157:get-movie --imdb-id 1
+1562435647157:get-movie --imdb-id 2
+1562435713626:stacktrace
+1562435727474:get-movies
+1562435751347:exit
+1562437037106:clear
+1562437040605:exit
+1562437077275:get-movies
+1562437126466:exit
+1562437150178:get-movies
+1562437295149:create-movie 1 'suicide squad'
+1562437299374:get-movies
+1562437369286:create-movie --imdb-id tt1386697 --title 'Suicide Squad' --director 'David Ayer' --year 2016
+1562437376222:get-movies
+1562437385866:get-movie --imdb-id tt1386697
+1562437411248:delete-movie tt1386697
+1562437415486:get-movies
+1562437420965:get-movie tt1386697
+1562437541641:get-movies
+1562437543582:exit
+1562437563712:get-movies
+1562437618340:create-movie --imdb-id tt1386697 --title 'Suicide Squad' --director 'David Ayer' --year 2016
+1562437622598:get-movies
+1562437636718:get-movie --imdb-id tt1386697
+1562437645553:delete-movie tt1386697
+1562437650132:get-movies
+1562437656602:get-movie tt1386697
+1562438387856:exit
