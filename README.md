@@ -1,6 +1,6 @@
 # `springboot-react-https`
 
-The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [Spring-Boot](https://spring.io/projects/spring-boot) applications. For it, we will implement a Spring-Boot Rest API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a Spring-Boot Shell Java application, called `movies-shell`, and a Frontend [ReactJS](https://reactjs.org/) application, called `movies-ui`, will be implement to consume `movies-api`.
+The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [Spring-Boot](https://spring.io/projects/spring-boot) applications. For it, we will implement a Spring-Boot Rest API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a Spring-Boot Shell Java application, called `movies-shell`, and a Frontend [ReactJS](https://reactjs.org/) application, called `movies-ui`, will be implemented to consume `movies-api`.
 
 ## Microservices
 
