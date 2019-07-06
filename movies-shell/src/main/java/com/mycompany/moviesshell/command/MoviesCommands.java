@@ -1,7 +1,5 @@
 package com.mycompany.moviesshell.command;
 
-import javax.validation.constraints.Size;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.moviesshell.dto.CreateMovieDto;
