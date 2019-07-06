@@ -3,8 +3,10 @@ spring:
     name: movies-shell
 
 http.client.ssl:
-  trust-store: classpath:keystore.p12
+  trust-store: keystore.p12
   trust-store-password: secret
 
 movies-api:
   url: https://localhost:8443/api/movies
+
+logging.level.root: off

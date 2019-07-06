@@ -31,9 +31,14 @@ You can interact directly with `movies-api` through its Swagger website, https:/
 
 ### movies-shell
 
-Open another terminal and inside `springboot-react-https/movies-shell` folder run
+Open another terminal and inside `springboot-react-https/movies-shell` folder run the command below to package the `jar`
 ```
-./mvnw clean spring-boot:run
+./mvnw clean package -DskipTests
+```
+
+Then, still inside `springboot-react-https/movies-shell`, run the following command to start `movies-shell`
+```
+./target/movies-shell-0.0.1-SNAPSHOT.jar
 ```
 
 Sample of the shell interface and execution

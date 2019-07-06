@@ -1,8 +1,8 @@
 package com.mycompany.moviesshell.config;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -20,7 +20,6 @@ import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
@@ -29,7 +28,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
 
   @Value("${http.client.ssl.trust-store}")
-  private Resource trustStore;
+  private String trustStore;
 
   @Value("${http.client.ssl.trust-store-password}")
   private char[] trustStorePassword;
@@ -38,7 +37,8 @@ public class RestTemplateConfig {
   RestTemplate restTemplate() throws NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException,
       KeyManagementException, UnrecoverableKeyException, KeyStoreException {
     KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-    keyStore.load(new FileInputStream(trustStore.getFile()), trustStorePassword);
+    InputStream in = this.getClass().getResourceAsStream(trustStore);
+    keyStore.load(in, trustStorePassword);
 
     SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustSelfSignedStrategy())
         .loadKeyMaterial(keyStore, trustStorePassword).build();
