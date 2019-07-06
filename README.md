@@ -1,6 +1,6 @@
 # `springboot-react-https`
 
-The goal of this project is to enable [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) in [Spring-Boot](https://spring.io/projects/spring-boot). For it, we will implement a Spring-Boot Rest API, called `movies-api`. This API will have its endpoints ready to accept and server over `HTTPS`. Futhermore, a Spring-Boot Java client, called `movies-client`, and a Frontend [ReactJS](https://reactjs.org/) application, called `movies-ui`, will be implement to consume `movies-api`.
+The goal of this project is to enable [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) in [Spring-Boot](https://spring.io/projects/spring-boot). For it, we will implement a Spring-Boot Rest API, called `movies-api`. This API will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a Spring-Boot Java client, called `movies-client`, and a Frontend [ReactJS](https://reactjs.org/) application, called `movies-ui`, will be implement to consume `movies-api`.
 
 ## Microservices
 
@@ -70,6 +70,6 @@ keytool -list -v -keystore keystore.p12
 
 ## References
 
--- https://www.javadevjournal.com/spring-boot/spring-boot-ssl/
+- https://www.javadevjournal.com/spring-boot/spring-boot-ssl/
 - https://www.baeldung.com/spring-boot-https-self-signed-certificate
 - https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
