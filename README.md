@@ -47,7 +47,14 @@ Sample of the shell interface and execution
 
 ### movies-ui
 
-Open another terminal and inside `springboot-react-https/movies-ui` folder run
+Open another terminal and go to `springboot-react-https/movies-ui` folder
+
+Execute the command below if you are running `movies-ui` for the **first time**
+```
+npm install
+```
+
+Then, to start `movies-ui` run
 ```
 npm start
 ```

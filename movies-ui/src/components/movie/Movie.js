@@ -81,7 +81,7 @@ class Movie extends Component {
       imdbId: movie.imdbId,
       title: movie.title,
       director: movie.director,
-      year: movie.year,
+      year: movie.year.toString(),
       imdbIdError: false,
       titleError: false,
       directorError: false,
