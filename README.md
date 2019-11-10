@@ -1,22 +1,22 @@
 # `springboot-react-https`
 
-The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://spring.io/projects/spring-boot) applications. For it, we will implement a Spring Boot Rest API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a Spring-Boot Shell Java application, called `movies-shell`, and a Frontend [ReactJS](https://reactjs.org/) application, called `movies-ui`, will be implemented to consume `movies-api`.
+The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) applications. For it, we will implement a `Spring Boot` Rest API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`ReactJS`](https://reactjs.org/) application, called `movies-ui`, will be implemented to consume `movies-api`.
 
-## Microservices
+## Applications
 
 ### movies-api
 
-Spring Boot Java Web application that exposes a Rest API to manage movies. Its endpoints are ready to accept and server over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
+`Spring Boot` Web Java application that exposes a Rest API to manage movies. Its endpoints are ready to accept and server over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
 
 ### movies-shell
 
-Spring Boot Shell Java application that uses `movies-api` to get information about a movie or to even create/delete a movie. All the communication with `movies-api` is over `HTTPS`.
+`Spring Boot` Shell Java application that uses `movies-api` to get information about a movie or to even create/delete a movie. All the communication with `movies-api` is over `HTTPS`.
 
 ### movies-ui
 
-ReactJS frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`Semantic UI React`](https://react.semantic-ui.com/) as CSS-styled framework.
+`ReactJS` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`Semantic UI React`](https://react.semantic-ui.com/) as CSS-styled framework.
 
-## Start microservices
+## Start applications
 
 ### movies-api
 
@@ -84,8 +84,18 @@ To list the certificates `keystore.p12` run the command below. The password will
 keytool -list -v -keystore keystore.p12
 ```
 
+## How to upgrade movies-ui dependencies to latest version
+
+In a terminal and inside `springboot-react-https/movies-ui` folder, run the following commands
+```
+npm i -g npm-check-updates
+ncu -u
+npm install
+```
+
 ## References
 
 - https://www.javadevjournal.com/spring-boot/spring-boot-ssl/
 - https://www.baeldung.com/spring-boot-https-self-signed-certificate
 - https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
+- https://medium.com/@danielgwilson/https-and-create-react-app-3a30ed31c904

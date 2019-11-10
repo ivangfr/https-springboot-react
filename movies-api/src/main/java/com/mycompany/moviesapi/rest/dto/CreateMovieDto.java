@@ -13,15 +13,15 @@ public class CreateMovieDto {
   @NotBlank
   private String imdbId;
 
-  @ApiModelProperty(position = 2, example = "Resident Evil")
+  @ApiModelProperty(position = 1, example = "Resident Evil")
   @NotBlank
   private String title;
 
-  @ApiModelProperty(position = 3, example = "Paul W.S. Anderson")
+  @ApiModelProperty(position = 2, example = "Paul W.S. Anderson")
   @NotBlank
   private String director;
 
-  @ApiModelProperty(position = 4, example = "2002")
+  @ApiModelProperty(position = 3, example = "2002")
   @Positive
   private Integer year;
 
