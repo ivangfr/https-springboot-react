@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Container, Grid, Segment } from 'semantic-ui-react'
+import { Container, Grid, Segment, Header, Divider, Icon } from 'semantic-ui-react'
 import MovieForm from './MovieForm'
 import MovieTable from './MovieTable'
-import moviesApi from '../misc/movies-api'
+import { moviesApi } from '../misc/MoviesApi'
 
-class Movie extends Component {
+class MoviePage extends Component {
   formInitialState = {
     imdbId: '',
     title: '',
@@ -23,7 +23,7 @@ class Movie extends Component {
   }
 
   componentDidMount() {
-    this.getAllMovies()
+    this.handleGetMovies()
   }
 
   handleChange = (e) => {
@@ -33,8 +33,8 @@ class Movie extends Component {
     this.setState({ form })
   }
 
-  getAllMovies = () => {
-    moviesApi.get('movies')
+  handleGetMovies = () => {
+    moviesApi.getMovies()
       .then(response => {
         const movies = response.data
         this.setState({ movies })
@@ -44,39 +44,35 @@ class Movie extends Component {
       })
   }
 
-  saveMovie = () => {
+  handleSaveMovie = () => {
     if (!this.isValidForm()) {
       return
     }
 
     const { imdbId, title, director, year } = this.state.form
-    const movie = { imdbId: imdbId, title: title, director: director, year: year }
+    const movie = { imdbId, title, director, year }
 
-    moviesApi.post('movies', movie, {
-      headers: {
-        'Content-type': 'application/json'
-      }
-    })
+    moviesApi.saveMovie(movie)
       .then(() => {
         this.clearForm()
-        this.getAllMovies()
+        this.handleGetMovies()
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  deleteMovie = (id) => {
-    moviesApi.delete(`movies/${id}`)
+  handleDeleteMovie = (id) => {
+    moviesApi.deleteMovie(id)
       .then(() => {
-        this.getAllMovies()
+        this.handleGetMovies()
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  editMovie = (movie) => {
+  handleEditMovie = (movie) => {
     const form = {
       imdbId: movie.imdbId,
       title: movie.title,
@@ -118,22 +114,25 @@ class Movie extends Component {
         <Grid>
           <Grid.Column mobile={16} tablet={16} computer={4}>
             <Segment>
+              <Header as='h2'>
+                <Icon name='video camera' />
+                <Header.Content>Movies</Header.Content>
+              </Header>
+              <Divider />
               <MovieForm
                 form={this.state.form}
                 handleChange={this.handleChange}
-                saveMovie={this.saveMovie}
+                handleSaveMovie={this.handleSaveMovie}
                 clearForm={this.clearForm}
               />
             </Segment>
           </Grid.Column>
           <Grid.Column mobile={16} tablet={16} computer={12}>
-            <Segment>
-              <MovieTable
-                movies={this.state.movies}
-                deleteMovie={this.deleteMovie}
-                editMovie={this.editMovie}
-              />
-            </Segment>
+            <MovieTable
+              movies={this.state.movies}
+              handleDeleteMovie={this.handleDeleteMovie}
+              handleEditMovie={this.handleEditMovie}
+            />
           </Grid.Column>
         </Grid>
       </Container>
@@ -141,4 +140,4 @@ class Movie extends Component {
   }
 }
 
-export default Movie
+export default MoviePage

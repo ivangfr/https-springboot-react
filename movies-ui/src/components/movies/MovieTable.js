@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'semantic-ui-react'
 
-function MovieTable({ movies, deleteMovie, editMovie }) {
+function MovieTable({ movies, handleDeleteMovie, handleEditMovie }) {
   const movieList = movies && movies.map(movie => {
     return (
       <Table.Row key={movie.imdbId}>
@@ -9,16 +9,16 @@ function MovieTable({ movies, deleteMovie, editMovie }) {
           <Button
             circular
             color='red'
-            size='small'
+            size='tiny'
             icon='trash'
-            onClick={() => deleteMovie(movie.imdbId)}
+            onClick={() => handleDeleteMovie(movie.imdbId)}
           />
           <Button
             circular
             color='orange'
-            size='small'
+            size='tiny'
             icon='edit'
-            onClick={() => editMovie(movie)}
+            onClick={() => handleEditMovie(movie)}
           />
         </Table.Cell>
         <Table.Cell>{movie.imdbId}</Table.Cell>
@@ -30,14 +30,14 @@ function MovieTable({ movies, deleteMovie, editMovie }) {
   })
 
   return (
-    <Table compact striped>
+    <Table compact striped unstackable>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell />
-          <Table.HeaderCell>ImdbID</Table.HeaderCell>
-          <Table.HeaderCell>Title</Table.HeaderCell>
-          <Table.HeaderCell>Director</Table.HeaderCell>
-          <Table.HeaderCell>Year</Table.HeaderCell>
+          <Table.HeaderCell width={2} />
+          <Table.HeaderCell width={3}>ImdbID</Table.HeaderCell>
+          <Table.HeaderCell width={6}>Title</Table.HeaderCell>
+          <Table.HeaderCell width={4}>Director</Table.HeaderCell>
+          <Table.HeaderCell width={1}>Year</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>

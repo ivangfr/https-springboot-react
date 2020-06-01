@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from './components/misc/Navbar'
-import Movie from './components/movie/Movie'
+import MoviePage from './components/movies/MoviePage'
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Movie />
+      <MoviePage />
     </div>
   );
 }
