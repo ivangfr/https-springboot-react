@@ -1,17 +1,5 @@
 package com.mycompany.moviesshell.config;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-
-import javax.net.ssl.SSLContext;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
@@ -24,30 +12,41 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import javax.net.ssl.SSLContext;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+
 @Configuration
 public class RestTemplateConfig {
 
-  @Value("${http.client.ssl.trust-store}")
-  private String trustStore;
+    @Value("${http.client.ssl.trust-store}")
+    private String trustStore;
 
-  @Value("${http.client.ssl.trust-store-password}")
-  private char[] trustStorePassword;
+    @Value("${http.client.ssl.trust-store-password}")
+    private char[] trustStorePassword;
 
-  @Bean
-  RestTemplate restTemplate() throws NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException,
-      KeyManagementException, UnrecoverableKeyException, KeyStoreException {
-    KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-    InputStream in = this.getClass().getResourceAsStream(trustStore);
-    keyStore.load(in, trustStorePassword);
+    @Bean
+    RestTemplate restTemplate() throws NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException,
+            KeyManagementException, UnrecoverableKeyException, KeyStoreException {
+        KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+        InputStream in = this.getClass().getResourceAsStream(trustStore);
+        keyStore.load(in, trustStorePassword);
 
-    SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustSelfSignedStrategy())
-        .loadKeyMaterial(keyStore, trustStorePassword).build();
+        SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                .loadKeyMaterial(keyStore, trustStorePassword).build();
 
-    SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
+        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
 
-    HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(socketFactory).build();
-    ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-    return new RestTemplate(requestFactory);
-  }
+        HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(socketFactory).build();
+        ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new RestTemplate(requestFactory);
+    }
 
 }

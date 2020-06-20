@@ -13,7 +13,7 @@ import java.util.Map;
 @Configuration
 public class ErrorAttributesConfig {
 
-  @Bean
+    @Bean
     public ErrorAttributes errorAttributes() {
         return new DefaultErrorAttributes() {
             @Override

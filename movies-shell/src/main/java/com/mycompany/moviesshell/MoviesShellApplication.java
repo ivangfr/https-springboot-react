@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MoviesShellApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MoviesShellApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MoviesShellApplication.class, args);
+    }
 
 }

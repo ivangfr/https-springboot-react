@@ -7,9 +7,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class CreateMovieDto {
 
-  private String imdbId;
-  private String title;
-  private String director;
-  private Integer year;
+    private String imdbId;
+    private String title;
+    private String director;
+    private Integer year;
 
 }

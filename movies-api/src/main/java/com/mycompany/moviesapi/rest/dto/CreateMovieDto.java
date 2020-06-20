@@ -1,28 +1,28 @@
 package com.mycompany.moviesapi.rest.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
-
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
 @Data
 public class CreateMovieDto {
 
-  @ApiModelProperty(example = "tt0120804")
-  @NotBlank
-  private String imdbId;
+    @Schema(example = "tt0120804")
+    @NotBlank
+    private String imdbId;
 
-  @ApiModelProperty(position = 1, example = "Resident Evil")
-  @NotBlank
-  private String title;
+    @Schema(example = "Resident Evil")
+    @NotBlank
+    private String title;
 
-  @ApiModelProperty(position = 2, example = "Paul W.S. Anderson")
-  @NotBlank
-  private String director;
+    @Schema(example = "Paul W.S. Anderson")
+    @NotBlank
+    private String director;
 
-  @ApiModelProperty(position = 3, example = "2002")
-  @Positive
-  private Integer year;
+    @Schema(example = "2002")
+    @Positive
+    private Integer year;
 
 }

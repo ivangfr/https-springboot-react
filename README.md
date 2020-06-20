@@ -16,6 +16,10 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
   `ReactJS` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`Semantic UI React`](https://react.semantic-ui.com/) as CSS-styled framework.
 
+## Prerequisites
+
+- `Java 11+`
+
 ## Start applications
 
 - **movies-api**

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MoviesPromptProvider implements PromptProvider {
 
-  @Override
-  public AttributedString getPrompt() {
-    return new AttributedString("movies-shell> ", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
-  }
+    @Override
+    public AttributedString getPrompt() {
+        return new AttributedString("movies-shell> ", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
+    }
 
 }
