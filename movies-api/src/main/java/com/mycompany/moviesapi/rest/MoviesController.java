@@ -2,7 +2,7 @@ package com.mycompany.moviesapi.rest;
 
 import com.mycompany.moviesapi.mapper.MovieMapper;
 import com.mycompany.moviesapi.model.Movie;
-import com.mycompany.moviesapi.rest.dto.CreateMovieDto;
+import com.mycompany.moviesapi.rest.dto.AddMovieDto;
 import com.mycompany.moviesapi.rest.dto.MovieDto;
 import com.mycompany.moviesapi.service.MovieService;
 import lombok.RequiredArgsConstructor;
@@ -41,8 +41,8 @@ public class MoviesController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public MovieDto createMovie(@Valid @RequestBody CreateMovieDto createMovieDto) {
-        Movie movie = movieMapper.toMovie(createMovieDto);
+    public MovieDto addMovie(@Valid @RequestBody AddMovieDto addMovieDto) {
+        Movie movie = movieMapper.toMovie(addMovieDto);
         movie = movieService.saveMovie(movie);
         return movieMapper.toMovieDto(movie);
     }

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CreateMovieDto {
+public class AddMovieDto {
 
     private String imdbId;
     private String title;

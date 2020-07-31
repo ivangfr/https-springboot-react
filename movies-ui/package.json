@@ -7,7 +7,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^1.1.0"
   },
   "scripts": {
     "start": "HTTPS=true PORT=3443 react-scripts start",

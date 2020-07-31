@@ -29,9 +29,9 @@ public class MoviesCommands {
         return String.format("%s %s", response.getStatusCodeValue(), response.getBody());
     }
 
-    @ShellMethod("Create movie")
-    public String createMovie(String imdbId, String title, String director, int year) throws JsonProcessingException {
-        ResponseEntity<String> response = movieApiClient.createMovie(imdbId, title, director, year);
+    @ShellMethod("Add movie")
+    public String addMovie(String imdbId, String title, String director, int year) throws JsonProcessingException {
+        ResponseEntity<String> response = movieApiClient.addMovie(imdbId, title, director, year);
         return String.format("%s %s", response.getStatusCodeValue(), response.getBody());
     }
 

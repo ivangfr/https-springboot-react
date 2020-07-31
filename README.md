@@ -10,7 +10,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 - **movies-shell**
 
-  `Spring Boot` Shell Java application that uses `movies-api` to get information about a movie or to even create/delete a movie. All the communication with `movies-api` is over `HTTPS`.
+  `Spring Boot` Shell Java application that uses `movies-api` to get information about a movie or to even add/delete a movie. All the communication with `movies-api` is over `HTTPS`.
 
 - **movies-ui**
 
@@ -18,7 +18,8 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 ## Prerequisites
 
-- `Java 11+`
+- [`npm`](https://www.npmjs.com/get-npm)
+- [`Java 11+`](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 
 ## Start applications
 

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 @Data
-public class CreateMovieDto {
+public class AddMovieDto {
 
     @Schema(example = "tt0120804")
     @NotBlank
