@@ -16,8 +16,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie validateAndGetMovie(String imdbId) {
-        return movieRepository.findById(imdbId)
-                .orElseThrow(() -> new MovieNotFoundException(String.format("Movie with imdbId '%s' not found", imdbId)));
+        return movieRepository.findById(imdbId).orElseThrow(() -> new MovieNotFoundException(imdbId));
     }
 
     @Override

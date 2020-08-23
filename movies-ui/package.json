@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "semantic-ui-react": "^1.1.0"
+    "react-scripts": "3.4.3",
+    "semantic-ui-react": "^1.2.1"
   },
   "scripts": {
     "start": "HTTPS=true PORT=3443 react-scripts start",

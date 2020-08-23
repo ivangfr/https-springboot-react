@@ -1,18 +1,18 @@
-# springboot-react-https
+# https-springboot-react
 
 The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) applications. For it, we will implement a `Spring Boot` Rest API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`ReactJS`](https://reactjs.org/) application, called `movies-ui`, will be implemented to consume `movies-api`.
 
 ## Applications
 
-- **movies-api**
+- ### movies-api
 
   `Spring Boot` Web Java application that exposes a Rest API to manage movies. Its endpoints are ready to accept and server over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
 
-- **movies-shell**
+- ### movies-shell
 
   `Spring Boot` Shell Java application that uses `movies-api` to get information about a movie or to even add/delete a movie. All the communication with `movies-api` is over `HTTPS`.
 
-- **movies-ui**
+- ### movies-ui
 
   `ReactJS` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`Semantic UI React`](https://react.semantic-ui.com/) as CSS-styled framework.
 
@@ -25,23 +25,23 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 - **movies-api**
 
-  - Open a terminal and inside `springboot-react-https/movies-api` folder run
+  - Open a terminal and inside `https-springboot-react/movies-api` folder run
     ```
     ./mvnw clean spring-boot:run
     ```
 
   - Its Swagger website is https://localhost:8443/swagger-ui.html
 
-    ![movies-api](images/movies-api.png)
+    ![movies-api-swagger](images/movies-api-swagger.png)
 
 - **movies-shell**
 
-  - Open another terminal and inside `springboot-react-https/movies-shell` folder run the command below to package the `jar`
+  - Open another terminal and inside `https-springboot-react/movies-shell` folder run the command below to package the `jar`
     ```
     ./mvnw clean package -DskipTests
     ```
 
-  - Still inside `springboot-react-https/movies-shell`, run the following command to start `movies-shell`
+  - Still inside `https-springboot-react/movies-shell`, run the following command to start `movies-shell`
     ```
     ./target/movies-shell-0.0.1-SNAPSHOT.jar
     ```
@@ -52,7 +52,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 - **movies-ui**
 
-  - Open another terminal and go to `springboot-react-https/movies-ui` folder
+  - Open another terminal and go to `https-springboot-react/movies-ui` folder
 
   - Execute the command below if you are running it for the first time
     ```
@@ -91,7 +91,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 ## How to upgrade movies-ui dependencies to latest version
 
-- In a terminal, make sure you are inside `springboot-react-https/movies-ui` folder
+- In a terminal, make sure you are inside `https-springboot-react/movies-ui` folder
 
 - Run the following commands
   ```

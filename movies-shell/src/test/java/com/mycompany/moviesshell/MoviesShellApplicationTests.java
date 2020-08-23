@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Disabled
 @SpringBootTest
-public class MoviesShellApplicationTests {
+class MoviesShellApplicationTests {
 
     @Test
     public void contextLoads() {
