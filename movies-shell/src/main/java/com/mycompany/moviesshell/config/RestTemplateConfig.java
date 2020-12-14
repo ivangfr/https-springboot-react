@@ -13,7 +13,6 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.SSLContext;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyManagementException;
@@ -33,7 +32,7 @@ public class RestTemplateConfig {
     private char[] trustStorePassword;
 
     @Bean
-    RestTemplate restTemplate() throws NoSuchAlgorithmException, CertificateException, FileNotFoundException, IOException,
+    RestTemplate restTemplate() throws NoSuchAlgorithmException, CertificateException, IOException,
             KeyManagementException, UnrecoverableKeyException, KeyStoreException {
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
         InputStream in = this.getClass().getResourceAsStream(trustStore);
