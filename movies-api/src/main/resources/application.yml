@@ -19,6 +19,10 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
+app:
+  cors:
+    allowed-origins: https://localhost:3443
+
 management:
   security:
     enabled: false
