@@ -36,12 +36,14 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 - **movies-shell**
 
-  - Open another terminal and inside `https-springboot-react/movies-shell` folder run the command below to package the `jar`
+  - Open a new terminal and navigate to `https-springboot-react/movies-shell` folder
+  
+  - Run the command below to package the `jar`
     ```
     ./mvnw clean package -DskipTests
     ```
 
-  - Still inside `https-springboot-react/movies-shell`, run the following command to start `movies-shell`
+  - Run the following command to start `movies-shell`
     ```
     ./target/movies-shell-0.0.1-SNAPSHOT.jar
     ```
@@ -52,7 +54,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 - **movies-ui**
 
-  - Open another terminal and go to `https-springboot-react/movies-ui` folder
+  - Open a new terminal and navigate to `https-springboot-react/movies-ui` folder
 
   - Execute the command below if you are running it for the first time
     ```
