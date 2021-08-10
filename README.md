@@ -25,7 +25,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 - **movies-api**
 
-  - Open a terminal and inside `https-springboot-react/movies-api` folder run
+  - Open a terminal and, inside `https-springboot-react/movies-api` folder, run the command bellow
     ```
     ./mvnw clean spring-boot:run
     ```
@@ -69,6 +69,10 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
   - The url is https://localhost:3443
 
     ![movies-ui](images/movies-ui.png)
+
+## Shutdown
+
+To stop `movies-api`, `movies-shell` and `movies-ui`, go to the terminal where they are running and press `Ctrl+C`
 
 ## Create PKCS12 self-signed certificate
 
