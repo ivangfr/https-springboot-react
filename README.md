@@ -30,9 +30,47 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
     ./mvnw clean spring-boot:run
     ```
 
-  - The Swagger website is https://localhost:8443/swagger-ui.html
+  - Access Swagger website at https://localhost:8443/swagger-ui.html
+
+  - Once accessed for the first time, the following page will appear
+
+    ![your-connection-is-not-private-8443](documentation/your-connection-is-not-private-8443.png)
+
+  - Click `Advanced` > `Proceed to localhost (unsafe)`
+
+    Now, you should see
 
     ![movies-api-swagger](documentation/movies-api-swagger.png)
+  
+  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`
+
+- **movies-ui**
+
+  - Open a new terminal and navigate to `https-springboot-react/movies-ui` folder
+
+  - Execute the command below if you are running it for the first time
+    ```
+    npm install
+    ```
+
+  - To start `movies-ui` run
+    ```
+    npm start
+    ```
+
+  - Access https://localhost:3443
+
+  - Once accessed for the first time, the following page will appear
+
+    ![your-connection-is-not-private-3443](documentation/your-connection-is-not-private-3443.png)
+
+  - Click `Advanced` > `Proceed to localhost (unsafe)`
+
+    Now, you shoud see
+
+    ![movies-ui](documentation/movies-ui.png)
+  
+  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:3443`, click `Not Secure` (in the address bar) > `Re-enable warnings`
 
 - **movies-shell**
 
@@ -52,27 +90,9 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
     ![movies-shell](documentation/movies-shell.png)
 
-- **movies-ui**
-
-  - Open a new terminal and navigate to `https-springboot-react/movies-ui` folder
-
-  - Execute the command below if you are running it for the first time
-    ```
-    npm install
-    ```
-
-  - To start `movies-ui` run
-    ```
-    npm start
-    ```
-
-  - The url is https://localhost:3443
-
-    ![movies-ui](documentation/movies-ui.png)
-
 ## Shutdown
 
-To stop `movies-api`, `movies-shell` and `movies-ui`, go to the terminal where they are running and press `Ctrl+C`
+To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where they are running and press `Ctrl+C`
 
 ## Create PKCS12 self-signed certificate
 
