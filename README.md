@@ -1,12 +1,12 @@
 # https-springboot-react
 
-The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) applications. For it, we will implement a `Spring Boot` Rest API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`ReactJS`](https://reactjs.org/) application, called `movies-ui`, will be implemented to consume `movies-api`.
+The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) applications. For it, we will implement a `Spring Boot` REST API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`ReactJS`](https://reactjs.org/) application, called `movies-ui`, will be implemented to consume `movies-api`.
 
 ## Applications
 
 - ### movies-api
 
-  `Spring Boot` Web Java application that exposes a Rest API to manage movies. Its endpoints are ready to accept and server over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
+  `Spring Boot` Web Java application that exposes a REST API to manage movies. Its endpoints are ready to accept and server over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
 
 - ### movies-shell
 
@@ -18,8 +18,8 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 ## Prerequisites
 
-- [`npm`](https://www.npmjs.com/get-npm)
-- [`Java 11+`](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [`Java 11+`](https://www.oracle.com/java/technologies/downloads/#java11)
 
 ## Start applications
 
@@ -30,9 +30,9 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
     ./mvnw clean spring-boot:run
     ```
 
-  - Its Swagger website is https://localhost:8443/swagger-ui.html
+  - The Swagger website is https://localhost:8443/swagger-ui.html
 
-    ![movies-api-swagger](images/movies-api-swagger.png)
+    ![movies-api-swagger](documentation/movies-api-swagger.png)
 
 - **movies-shell**
 
@@ -50,7 +50,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
   - Sample of the shell interface and execution
 
-    ![movies-shell](images/movies-shell.png)
+    ![movies-shell](documentation/movies-shell.png)
 
 - **movies-ui**
 
@@ -68,7 +68,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
   - The url is https://localhost:3443
 
-    ![movies-ui](images/movies-ui.png)
+    ![movies-ui](documentation/movies-ui.png)
 
 ## Shutdown
 

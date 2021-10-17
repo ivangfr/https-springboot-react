@@ -40,5 +40,4 @@ public class MoviesCommands {
         ResponseEntity<String> response = movieApiClient.deleteMovie(imdbId);
         return String.format("%s %s", response.getStatusCodeValue(), response.getBody());
     }
-
 }

@@ -1,13 +1,14 @@
-package com.mycompany.moviesapi.rest.dto;
+package com.mycompany.moviesshell.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class MovieDto {
+@AllArgsConstructor
+public class AddMovieRequest {
 
     private String imdbId;
     private String title;
     private String director;
     private Integer year;
-
 }

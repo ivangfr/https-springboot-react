@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 @Data
-public class AddMovieDto {
+public class AddMovieRequest {
 
     @Schema(example = "tt0120804")
     @NotBlank
@@ -24,5 +24,4 @@ public class AddMovieDto {
     @Schema(example = "2002")
     @Positive
     private Integer year;
-
 }

@@ -2,8 +2,8 @@ package com.mycompany.moviesapi.rest;
 
 import com.mycompany.moviesapi.mapper.MovieMapper;
 import com.mycompany.moviesapi.model.Movie;
-import com.mycompany.moviesapi.rest.dto.AddMovieDto;
-import com.mycompany.moviesapi.rest.dto.MovieDto;
+import com.mycompany.moviesapi.rest.dto.AddMovieRequest;
+import com.mycompany.moviesapi.rest.dto.MovieResponse;
 import com.mycompany.moviesapi.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,29 +29,28 @@ public class MoviesController {
     private final MovieMapper movieMapper;
 
     @GetMapping
-    public List<MovieDto> getMovies() {
-        return movieService.getMovies().stream().map(movieMapper::toMovieDto).collect(Collectors.toList());
+    public List<MovieResponse> getMovies() {
+        return movieService.getMovies().stream().map(movieMapper::toMovieResponse).collect(Collectors.toList());
     }
 
     @GetMapping("/{imdbId}")
-    public MovieDto getMovie(@PathVariable String imdbId) {
+    public MovieResponse getMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
-        return movieMapper.toMovieDto(movie);
+        return movieMapper.toMovieResponse(movie);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public MovieDto addMovie(@Valid @RequestBody AddMovieDto addMovieDto) {
-        Movie movie = movieMapper.toMovie(addMovieDto);
+    public MovieResponse addMovie(@Valid @RequestBody AddMovieRequest addMovieRequest) {
+        Movie movie = movieMapper.toMovie(addMovieRequest);
         movie = movieService.saveMovie(movie);
-        return movieMapper.toMovieDto(movie);
+        return movieMapper.toMovieResponse(movie);
     }
 
     @DeleteMapping("/{imdbId}")
-    public MovieDto deleteMovie(@PathVariable String imdbId) {
+    public MovieResponse deleteMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
         movieService.deleteMovie(movie);
-        return movieMapper.toMovieDto(movie);
+        return movieMapper.toMovieResponse(movie);
     }
-
 }

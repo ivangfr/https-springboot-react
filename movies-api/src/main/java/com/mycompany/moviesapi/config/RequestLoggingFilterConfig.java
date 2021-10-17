@@ -19,5 +19,4 @@ public class RequestLoggingFilterConfig {
         filter.setAfterMessagePrefix("Finished request [");
         return filter;
     }
-
 }

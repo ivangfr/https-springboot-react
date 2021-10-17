@@ -47,5 +47,4 @@ public class RestTemplateConfig {
         ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
         return new RestTemplate(requestFactory);
     }
-
 }

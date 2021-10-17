@@ -11,5 +11,4 @@ class MoviesShellApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

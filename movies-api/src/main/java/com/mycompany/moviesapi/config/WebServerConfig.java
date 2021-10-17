@@ -38,5 +38,4 @@ public class WebServerConfig {
         connector.setRedirectPort(8443);
         return connector;
     }
-
 }

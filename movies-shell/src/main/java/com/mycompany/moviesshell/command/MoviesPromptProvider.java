@@ -12,5 +12,4 @@ public class MoviesPromptProvider implements PromptProvider {
     public AttributedString getPrompt() {
         return new AttributedString("movies-shell> ", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW));
     }
-
 }

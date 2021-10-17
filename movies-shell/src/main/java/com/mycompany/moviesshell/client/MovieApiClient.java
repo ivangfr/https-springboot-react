@@ -2,7 +2,7 @@ package com.mycompany.moviesshell.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mycompany.moviesshell.dto.AddMovieDto;
+import com.mycompany.moviesshell.dto.AddMovieRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -33,13 +33,13 @@ public class MovieApiClient {
     }
 
     public ResponseEntity<String> addMovie(String imdbId, String title, String director, int year) throws JsonProcessingException {
-        AddMovieDto addMovieDto = new AddMovieDto(imdbId, title, director, year);
-        String addMovieDtoStr = objectMapper.writeValueAsString(addMovieDto);
+        AddMovieRequest addMovieRequest = new AddMovieRequest(imdbId, title, director, year);
+        String addMovieRequestStr = objectMapper.writeValueAsString(addMovieRequest);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<String> request = new HttpEntity<>(addMovieDtoStr, headers);
+        HttpEntity<String> request = new HttpEntity<>(addMovieRequestStr, headers);
         return restTemplate.postForEntity(movieApiUrl, request, String.class);
     }
 
@@ -47,5 +47,4 @@ public class MovieApiClient {
         String url = String.format("%s/%s", movieApiUrl, imdbId);
         return restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);
     }
-
 }
