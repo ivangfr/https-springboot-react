@@ -121,6 +121,7 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
 - Run the following commands
   ```
+  npm upgrade
   npm i -g npm-check-updates
   ncu -u
   npm install
