@@ -20,7 +20,7 @@
         <spring-shell.version>2.0.1.RELEASE</spring-shell.version>
         <spring-web.version>5.3.16</spring-web.version>
         <httpclient.version>4.5.13</httpclient.version>
-        <jackson-databind.version>2.13.1</jackson-databind.version>
+        <jackson-databind.version>2.13.2.1</jackson-databind.version>
     </properties>
 
     <dependencies>
