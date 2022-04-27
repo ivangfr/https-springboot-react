@@ -1,4 +1,4 @@
-package com.mycompany.moviesapi.config;
+package com.mycompany.moviesapi.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
