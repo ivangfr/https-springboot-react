@@ -12,7 +12,7 @@ spring:
   application:
     name: movies-api
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;NON_KEYWORDS=YEAR // add NON_KEYWORDS=YEAR because Movie model class has a field called 'year'
     driverClassName: org.h2.Driver
     username: sa
     password: password
