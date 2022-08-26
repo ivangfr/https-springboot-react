@@ -8,7 +8,7 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
 public class RequestLoggingFilterConfig {
 
     @Bean
-    CommonsRequestLoggingFilter logFilter() {
+    public CommonsRequestLoggingFilter logFilter() {
         CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
         filter.setIncludeClientInfo(true);
         filter.setIncludeHeaders(true);

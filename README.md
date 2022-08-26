@@ -19,7 +19,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 ## Prerequisites
 
 - [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [`Java 11+`](https://www.oracle.com/java/technologies/downloads/#java11)
+- [`Java 17+`](https://www.oracle.com/java/technologies/downloads/#java17)
 
 ## Start applications
 
@@ -30,19 +30,19 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
     ./mvnw clean spring-boot:run
     ```
 
-  - Access Swagger website at https://localhost:8443/swagger-ui.html
+  - Access Swagger website at https://localhost:8443/swagger-ui/index.html
 
   - Once accessed for the first time, the following page will appear
 
-    ![your-connection-is-not-private-8443](documentation/your-connection-is-not-private-8443.png)
+    ![your-connection-is-not-private-8443](documentation/your-connection-is-not-private-8443.jpeg)
 
   - Click `Advanced` > `Proceed to localhost (unsafe)`
 
     Now, you should see
 
-    ![movies-api-swagger](documentation/movies-api-swagger.png)
+    ![movies-api-swagger](documentation/movies-api-swagger.jpeg)
   
-  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`
+  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui/index.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`
 
 - **movies-ui**
 
@@ -62,13 +62,13 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
   - Once accessed for the first time, the following page will appear
 
-    ![your-connection-is-not-private-3443](documentation/your-connection-is-not-private-3443.png)
+    ![your-connection-is-not-private-3443](documentation/your-connection-is-not-private-3443.jpeg)
 
   - Click `Advanced` > `Proceed to localhost (unsafe)`
 
     Now, you shoud see
 
-    ![movies-ui](documentation/movies-ui.png)
+    ![movies-ui](documentation/movies-ui.jpeg)
   
   - To re-enable the security warning saying `Your connection is not private` for `https://localhost:3443`, click `Not Secure` (in the address bar) > `Re-enable warnings`
 
@@ -88,7 +88,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
   - Sample of the shell interface and execution
 
-    ![movies-shell](documentation/movies-shell.png)
+    ![movies-shell](documentation/movies-shell.jpeg)
 
 ## Shutdown
 
