@@ -8,7 +8,6 @@ import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,13 +37,17 @@ public class RestTemplateConfig {
         InputStream in = this.getClass().getResourceAsStream(trustStore);
         keyStore.load(in, trustStorePassword);
 
-        SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                .loadKeyMaterial(keyStore, trustStorePassword).build();
+        SSLContext sslContext = SSLContextBuilder.create()
+                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                .loadKeyMaterial(keyStore, trustStorePassword)
+                .build();
 
         SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
 
-        HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(socketFactory).build();
-        ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-        return new RestTemplate(requestFactory);
+        HttpClient httpClient = HttpClients.custom()
+                .setSSLSocketFactory(socketFactory)
+                .build();
+
+        return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
     }
 }

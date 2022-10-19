@@ -30,7 +30,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
     ./mvnw clean spring-boot:run
     ```
 
-  - Access Swagger website at https://localhost:8443/swagger-ui/index.html
+  - Access Swagger website at https://localhost:8443/swagger-ui.html
 
   - Once accessed for the first time, the following page will appear
 
@@ -42,7 +42,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
     ![movies-api-swagger](documentation/movies-api-swagger.jpeg)
   
-  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui/index.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`
+  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`
 
 - **movies-ui**
 
