@@ -1,8 +1,6 @@
 spring:
   application:
     name: movies-shell
-  main:
-    allow-circular-references: true
 
 http.client.ssl:
   trust-store: keystore.p12
