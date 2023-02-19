@@ -1,10 +1,16 @@
 package com.ivanfranchin.moviesshell.config;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
+import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
+import org.apache.hc.client5.http.ssl.TrustSelfSignedStrategy;
+import org.apache.hc.core5.http.URIScheme;
+import org.apache.hc.core5.http.config.Registry;
+import org.apache.hc.core5.http.config.RegistryBuilder;
+import org.apache.hc.core5.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,10 +48,14 @@ public class RestTemplateConfig {
                 .loadKeyMaterial(keyStore, trustStorePassword)
                 .build();
 
-        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
+        Registry<ConnectionSocketFactory> socketRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
+                .register(URIScheme.HTTPS.getId(), new SSLConnectionSocketFactory(sslContext))
+                .register(URIScheme.HTTP.getId(), new PlainConnectionSocketFactory())
+                .build();
 
-        HttpClient httpClient = HttpClients.custom()
-                .setSSLSocketFactory(socketFactory)
+        HttpClient httpClient = HttpClientBuilder.create()
+                .setConnectionManager(new PoolingHttpClientConnectionManager(socketRegistry))
+                .setConnectionManagerShared(true)
                 .build();
 
         return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));

@@ -38,9 +38,9 @@ function MovieForm({ form, handleChange, handleSaveMovie, clearForm }) {
         error={form.yearError}
       />
       <Button.Group fluid>
-        <Button onClick={clearForm}>Cancel</Button>
-        <Button.Or />
         <Button positive onClick={handleSaveMovie}>Save</Button>
+        <Button.Or />
+        <Button onClick={clearForm}>Cancel</Button>
       </Button.Group>
     </Form>
   )

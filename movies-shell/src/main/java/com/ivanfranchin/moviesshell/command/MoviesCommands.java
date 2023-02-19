@@ -22,24 +22,24 @@ public class MoviesCommands {
     @ShellMethod("Get all movies")
     public String getMovies() {
         ResponseEntity<String> response = movieApiClient.getMovies();
-        return String.format("%s %s", response.getStatusCodeValue(), response.getBody());
+        return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 
     @ShellMethod("Get specific movie")
     public String getMovie(String imdbId) {
         ResponseEntity<String> response = movieApiClient.getMovie(imdbId);
-        return String.format("%s %s", response.getStatusCodeValue(), response.getBody());
+        return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 
     @ShellMethod("Add movie")
     public String addMovie(String imdbId, String title, String director, int year) throws JsonProcessingException {
         ResponseEntity<String> response = movieApiClient.addMovie(imdbId, title, director, year);
-        return String.format("%s %s", response.getStatusCodeValue(), response.getBody());
+        return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 
     @ShellMethod("Delete movie")
     public String deleteMovie(String imdbId) {
         ResponseEntity<String> response = movieApiClient.deleteMovie(imdbId);
-        return String.format("%s %s", response.getStatusCodeValue(), response.getBody());
+        return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 }

@@ -44,6 +44,24 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
   
   - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`
 
+- **movies-shell**
+
+  - Open a new terminal and navigate to `https-springboot-react/movies-shell` folder
+  
+  - Run the command below to package the `jar`
+    ```
+    ./mvnw clean package -DskipTests
+    ```
+
+  - Run the following command to start `movies-shell`
+    ```
+    ./target/movies-shell-0.0.1-SNAPSHOT.jar
+    ```
+
+  - Sample of the shell interface and execution
+
+    ![movies-shell](documentation/movies-shell.jpeg)
+
 - **movies-ui**
 
   - Open a new terminal and navigate to `https-springboot-react/movies-ui` folder
@@ -69,26 +87,13 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
     Now, you shoud see
 
     ![movies-ui](documentation/movies-ui.jpeg)
+
+    > **Note:** In case `movies-ui` cannot communicate with `movies-api`
+    > - Open `movies-api` Swagger website: https://localhost:8443/swagger-ui.html
+    > - Click `Advanced` > `Proceed to localhost (unsafe)`
+    > - Reload `movies-ui` page
   
   - To re-enable the security warning saying `Your connection is not private` for `https://localhost:3443`, click `Not Secure` (in the address bar) > `Re-enable warnings`
-
-- **movies-shell**
-
-  - Open a new terminal and navigate to `https-springboot-react/movies-shell` folder
-  
-  - Run the command below to package the `jar`
-    ```
-    ./mvnw clean package -DskipTests
-    ```
-
-  - Run the following command to start `movies-shell`
-    ```
-    ./target/movies-shell-0.0.1-SNAPSHOT.jar
-    ```
-
-  - Sample of the shell interface and execution
-
-    ![movies-shell](documentation/movies-shell.jpeg)
 
 ## Shutdown
 
