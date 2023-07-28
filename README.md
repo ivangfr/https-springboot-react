@@ -1,6 +1,6 @@
 # https-springboot-react
 
-The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) applications. For it, we will implement a `Spring Boot` REST API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`ReactJS`](https://reactjs.org/) application, called `movies-ui`, will be implemented to consume `movies-api`.
+The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) applications. For it, we will implement a `Spring Boot` REST API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`React`](https://react.dev/) application, called `movies-ui`, will be implemented to consume `movies-api`.
 
 ## Applications
 
@@ -14,7 +14,7 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 - ### movies-ui
 
-  `ReactJS` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`Semantic UI React`](https://react.semantic-ui.com/) as CSS-styled framework.
+  `React` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`Semantic UI React`](https://react.semantic-ui.com/) as CSS-styled framework.
 
 ## Prerequisites
 
