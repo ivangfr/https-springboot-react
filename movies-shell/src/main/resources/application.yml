@@ -1,6 +1,9 @@
 spring:
   application:
     name: movies-shell
+  shell:
+    interactive:
+      enabled: true
 
 http.client.ssl:
   trust-store: keystore.p12

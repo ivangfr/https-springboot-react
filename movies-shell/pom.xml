@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.4</version>
+        <version>3.3.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -17,10 +17,10 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring-shell.version>3.1.4</spring-shell.version>
-        <spring-web.version>6.0.12</spring-web.version>
-        <httpclient5.version>5.2.1</httpclient5.version>
-        <jackson-databind.version>2.15.2</jackson-databind.version>
+        <spring-shell.version>3.3.0</spring-shell.version>
+        <spring-web.version>6.1.8</spring-web.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
+        <jackson-databind.version>2.17.1</jackson-databind.version>
     </properties>
 
     <dependencies>

@@ -29,7 +29,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - **movies-api**
 
-  - Open a terminal and, inside `https-springboot-react/movies-api` folder, run the command bellow
+  - Open a terminal and, inside `https-springboot-react/movies-api` folder, run the command bellow:
     ```
     ./mvnw clean spring-boot:run
     ```
@@ -42,7 +42,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   - Click `Advanced` > `Proceed to localhost (unsafe)`
 
-    Now, you should see
+    Now, you should see:
 
     ![movies-api-swagger](documentation/movies-api-swagger.jpeg)
   
@@ -52,12 +52,12 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   - Open a new terminal and navigate to `https-springboot-react/movies-shell` folder
   
-  - Run the command below to package the `jar`
+  - Run the command below to package the `jar`:
     ```
     ./mvnw clean package -DskipTests
     ```
 
-  - Run the following command to start `movies-shell`
+  - Run the following command to start `movies-shell`:
     ```
     ./target/movies-shell-0.0.1-SNAPSHOT.jar
     ```
@@ -68,27 +68,27 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - **movies-ui**
 
-  - Open a new terminal and navigate to `https-springboot-react/movies-ui` folder
+  - Open a new terminal and navigate to `https-springboot-react/movies-ui` folder;
 
-  - Execute the command below if you are running it for the first time
+  - Execute the command below if you are running it for the first time:
     ```
     npm install
     ```
 
-  - To start `movies-ui` run
+  - To start `movies-ui` run:
     ```
     npm start
     ```
 
   - Access https://localhost:3443
 
-  - Once accessed for the first time, the following page will appear
+  - Once accessed for the first time, the following page will appear:
 
     ![your-connection-is-not-private-3443](documentation/your-connection-is-not-private-3443.jpeg)
 
   - Click `Advanced` > `Proceed to localhost (unsafe)`
 
-    Now, you shoud see
+    Now, you shoud see:
 
     ![movies-ui](documentation/movies-ui.jpeg)
 
@@ -97,7 +97,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
     > - Click `Advanced` > `Proceed to localhost (unsafe)`
     > - Reload `movies-ui` page
   
-  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:3443`, click `Not Secure` (in the address bar) > `Re-enable warnings`
+  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:3443`, click `Not Secure` (in the address bar) > `Re-enable warnings`.
 
 ## Shutdown
 
@@ -105,7 +105,7 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
 ## Create PKCS12 self-signed certificate
 
-- In order to create a [`PKCS12`](https://en.wikipedia.org/wiki/PKCS_12) certificate, run the following command
+- In order to create a [`PKCS12`](https://en.wikipedia.org/wiki/PKCS_12) certificate, run the following command:
   ```
   keytool -genkeypair -alias localhost \
     -keyalg RSA -keysize 2048 -storetype PKCS12 \
@@ -113,13 +113,13 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
     -dname "CN=localhost, OU=MyCompany, O=MyCompany, L=Berlin, ST=Berlin, C=DE"
   ```
 
-- Set a password. In this project, we will use `secret`
+- Set a password. In this project, we will use `secret`:
   ```
   Enter keystore password: secret
   Re-enter new password: secret
   ```
 
-- To list the certificates `keystore.p12` run the command below. The password will be requested.
+- To list the certificates `keystore.p12` run the command below. The password will be requested:
   ```
   keytool -list -v -keystore keystore.p12
   ```
@@ -128,7 +128,7 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
 - In a terminal, make sure you are inside `https-springboot-react/movies-ui` folder
 
-- Run the following commands
+- Run the following commands:
   ```
   npm upgrade
   npm i -g npm-check-updates
