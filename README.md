@@ -1,6 +1,6 @@
 # https-springboot-react
 
-The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) applications. For it, we will implement a `Spring Boot` REST API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`React`](https://react.dev/) application, called `movies-ui`, will be implemented to consume `movies-api`.
+The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki/HTTPS) and enable it in [`Spring Boot`](https://docs.spring.io/spring-boot/index.html) applications. For it, we will implement a `Spring Boot` REST API, called `movies-api` that will have its endpoints ready to accept and server over `HTTPS`. Furthermore, a `Spring Boot Shell` Java application, called `movies-shell`, and a Frontend [`React`](https://react.dev/) application, called `movies-ui`, will be implemented to consume `movies-api`.
 
 ## Proof-of-Concepts & Articles
 
@@ -23,13 +23,13 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Prerequisites
 
 - [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [`Java 17+`](https://www.oracle.com/java/technologies/downloads/#java17)
+- [`Java 21+`](https://www.oracle.com/java/technologies/downloads/#java21)
 
 ## Start applications
 
 - **movies-api**
 
-  - Open a terminal and, inside `https-springboot-react/movies-api` folder, run the command bellow:
+  - Open a terminal and, inside the `https-springboot-react/movies-api` folder, run the command bellow:
     ```
     ./mvnw clean spring-boot:run
     ```
@@ -50,7 +50,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - **movies-shell**
 
-  - Open a new terminal and navigate to `https-springboot-react/movies-shell` folder
+  - Open a new terminal and navigate to the `https-springboot-react/movies-shell` folder
   
   - Run the command below to package the `jar`:
     ```
@@ -68,7 +68,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - **movies-ui**
 
-  - Open a new terminal and navigate to `https-springboot-react/movies-ui` folder;
+  - Open a new terminal and navigate to the `https-springboot-react/movies-ui` folder;
 
   - Execute the command below if you are running it for the first time:
     ```
@@ -126,7 +126,7 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
 ## How to upgrade movies-ui dependencies to latest version
 
-- In a terminal, make sure you are inside `https-springboot-react/movies-ui` folder
+- In a terminal, make sure you are inside the `https-springboot-react/movies-ui` folder
 
 - Run the following commands:
   ```

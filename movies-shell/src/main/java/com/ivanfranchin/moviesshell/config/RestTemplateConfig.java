@@ -6,7 +6,7 @@ import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
 import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
 import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
-import org.apache.hc.client5.http.ssl.TrustSelfSignedStrategy;
+import org.apache.hc.client5.http.ssl.TrustAllStrategy;
 import org.apache.hc.core5.http.URIScheme;
 import org.apache.hc.core5.http.config.Registry;
 import org.apache.hc.core5.http.config.RegistryBuilder;
@@ -44,7 +44,7 @@ public class RestTemplateConfig {
         keyStore.load(in, trustStorePassword);
 
         SSLContext sslContext = SSLContextBuilder.create()
-                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                .loadTrustMaterial(null, new TrustAllStrategy())
                 .loadKeyMaterial(keyStore, trustStorePassword)
                 .build();
 
