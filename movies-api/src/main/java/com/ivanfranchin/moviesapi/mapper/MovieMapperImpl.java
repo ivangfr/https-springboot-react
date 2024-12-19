@@ -22,10 +22,10 @@ public class MovieMapperImpl implements MovieMapper {
             return null;
         }
         Movie movie = new Movie();
-        movie.setImdbId(addMovieRequest.getImdbId());
-        movie.setTitle(addMovieRequest.getTitle());
-        movie.setDirector(addMovieRequest.getDirector());
-        movie.setYear(String.valueOf(addMovieRequest.getYear()));
+        movie.setImdbId(addMovieRequest.imdbId());
+        movie.setTitle(addMovieRequest.title());
+        movie.setDirector(addMovieRequest.director());
+        movie.setYear(String.valueOf(addMovieRequest.year()));
         return movie;
     }
 }
