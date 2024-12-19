@@ -1,6 +1,5 @@
 package com.ivanfranchin.moviesapi.rest;
 
-import com.ivanfranchin.moviesapi.mapper.MovieMapper;
 import com.ivanfranchin.moviesapi.model.Movie;
 import com.ivanfranchin.moviesapi.rest.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.rest.dto.MovieResponse;
@@ -26,31 +25,32 @@ import java.util.stream.Collectors;
 public class MoviesController {
 
     private final MovieService movieService;
-    private final MovieMapper movieMapper;
 
     @GetMapping
     public List<MovieResponse> getMovies() {
-        return movieService.getMovies().stream().map(movieMapper::toMovieResponse).collect(Collectors.toList());
+        return movieService.getMovies().stream()
+                .map(MovieResponse::from)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{imdbId}")
     public MovieResponse getMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
-        return movieMapper.toMovieResponse(movie);
+        return MovieResponse.from(movie);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public MovieResponse addMovie(@Valid @RequestBody AddMovieRequest addMovieRequest) {
-        Movie movie = movieMapper.toMovie(addMovieRequest);
+        Movie movie = Movie.from(addMovieRequest);
         movie = movieService.saveMovie(movie);
-        return movieMapper.toMovieResponse(movie);
+        return MovieResponse.from(movie);
     }
 
     @DeleteMapping("/{imdbId}")
     public MovieResponse deleteMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
         movieService.deleteMovie(movie);
-        return movieMapper.toMovieResponse(movie);
+        return MovieResponse.from(movie);
     }
 }
