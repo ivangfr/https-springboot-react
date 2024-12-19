@@ -1,6 +1,6 @@
-package com.ivanfranchin.moviesapi.model;
+package com.ivanfranchin.moviesapi.movie.model;
 
-import com.ivanfranchin.moviesapi.rest.dto.AddMovieRequest;
+import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
