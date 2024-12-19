@@ -23,16 +23,6 @@ app:
   cors:
     allowed-origins: https://localhost:3443
 
-management:
-  security:
-    enabled: false
-  endpoints:
-    web:
-      exposure.include: beans, env, health, info, metrics, mappings
-  endpoint:
-    health:
-      show-details: always
-
 springdoc:
   show-actuator: true
   swagger-ui:
