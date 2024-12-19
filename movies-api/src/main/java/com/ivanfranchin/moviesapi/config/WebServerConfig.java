@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class WebServerConfig {
 
     @Bean
-    public ServletWebServerFactory servletContainer() {
+    ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
             @Override
             protected void postProcessContext(Context context) {

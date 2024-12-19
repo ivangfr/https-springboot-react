@@ -37,7 +37,7 @@ public class RestTemplateConfig {
     private char[] trustStorePassword;
 
     @Bean
-    public RestTemplate restTemplate() throws NoSuchAlgorithmException, CertificateException, IOException,
+    RestTemplate restTemplate() throws NoSuchAlgorithmException, CertificateException, IOException,
             KeyManagementException, UnrecoverableKeyException, KeyStoreException {
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
         InputStream in = this.getClass().getResourceAsStream(trustStore);
