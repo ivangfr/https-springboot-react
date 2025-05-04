@@ -10,11 +10,11 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### movies-api
 
-  `Spring Boot` Web Java application that exposes a REST API to manage movies. Its endpoints are ready to accept and server over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
+  `Spring Boot` Web Java application that exposes a REST API to manage movies. Its endpoints are ready to accept and serve over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
 
 - ### movies-shell
 
-  `Spring Boot` Shell Java application that uses `movies-api` to get information about a movie or to even add/delete a movie. All the communication with `movies-api` is over `HTTPS`.
+  `Spring Boot` Shell Java application that uses `movies-api` to get information about a movie or to even add/delete a movie. All communication with `movies-api` is over `HTTPS`.
 
 - ### movies-ui
 
@@ -23,60 +23,60 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Prerequisites
 
 - [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [`Java 21+`](https://www.oracle.com/java/technologies/downloads/#java21)
+- [`Java 21`](https://www.oracle.com/java/technologies/downloads/#java21) or higher.
 
 ## Start applications
 
 - **movies-api**
 
-  - Open a terminal and, inside the `https-springboot-react/movies-api` folder, run the command bellow:
-    ```
+  - Open a terminal and, inside the `https-springboot-react/movies-api` folder, run the command below:
+    ```bash
     ./mvnw clean spring-boot:run
     ```
 
   - Access Swagger website at https://localhost:8443/swagger-ui.html
 
-  - Once accessed for the first time, the following page will appear
+  - Once accessed for the first time, the following page will appear:
 
     ![your-connection-is-not-private-8443](documentation/your-connection-is-not-private-8443.jpeg)
 
-  - Click `Advanced` > `Proceed to localhost (unsafe)`
+  - Click `Advanced` > `Proceed to localhost (unsafe)`.
 
     Now, you should see:
 
     ![movies-api-swagger](documentation/movies-api-swagger.jpeg)
   
-  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`
+  - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`.
 
 - **movies-shell**
 
-  - Open a new terminal and navigate to the `https-springboot-react/movies-shell` folder
+  - Open a new terminal and navigate to the `https-springboot-react/movies-shell` folder.
   
   - Run the command below to package the `jar`:
-    ```
+    ```bash
     ./mvnw clean package -DskipTests
     ```
 
   - Run the following command to start `movies-shell`:
-    ```
+    ```bash
     ./target/movies-shell-0.0.1-SNAPSHOT.jar
     ```
 
-  - Sample of the shell interface and execution
+  - Sample of the shell interface and execution:
 
     ![movies-shell](documentation/movies-shell.jpeg)
 
 - **movies-ui**
 
-  - Open a new terminal and navigate to the `https-springboot-react/movies-ui` folder;
+  - Open a new terminal and navigate to the `https-springboot-react/movies-ui` folder.
 
   - Execute the command below if you are running it for the first time:
-    ```
+    ```bash
     npm install
     ```
 
   - To start `movies-ui` run:
-    ```
+    ```bash
     npm start
     ```
 
@@ -88,11 +88,11 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   - Click `Advanced` > `Proceed to localhost (unsafe)`
 
-    Now, you shoud see:
+    Now, you should see:
 
     ![movies-ui](documentation/movies-ui.jpeg)
 
-    > **Note:** In case `movies-ui` cannot communicate with `movies-api`
+    > **Note:** In case `movies-ui` cannot communicate with `movies-api`:
     > - Open `movies-api` Swagger website: https://localhost:8443/swagger-ui.html
     > - Click `Advanced` > `Proceed to localhost (unsafe)`
     > - Reload `movies-ui` page
@@ -101,12 +101,12 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Shutdown
 
-To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where they are running and press `Ctrl+C`
+To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where they are running and press `Ctrl+C`.
 
 ## Create PKCS12 self-signed certificate
 
 - In order to create a [`PKCS12`](https://en.wikipedia.org/wiki/PKCS_12) certificate, run the following command:
-  ```
+  ```bash
   keytool -genkeypair -alias localhost \
     -keyalg RSA -keysize 2048 -storetype PKCS12 \
     -keystore keystore.p12 -validity 3650 \
@@ -114,22 +114,22 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
   ```
 
 - Set a password. In this project, we will use `secret`:
-  ```
+  ```bash
   Enter keystore password: secret
   Re-enter new password: secret
   ```
 
 - To list the certificates `keystore.p12` run the command below. The password will be requested:
-  ```
+  ```bash
   keytool -list -v -keystore keystore.p12
   ```
 
 ## How to upgrade movies-ui dependencies to latest version
 
-- In a terminal, make sure you are inside the `https-springboot-react/movies-ui` folder
+- In a terminal, make sure you are inside the `https-springboot-react/movies-ui` folder.
 
 - Run the following commands:
-  ```
+  ```bash
   npm upgrade
   npm i -g npm-check-updates
   ncu -u
