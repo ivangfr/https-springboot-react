@@ -23,7 +23,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Prerequisites
 
 - [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [`Java 21`](https://www.oracle.com/java/technologies/downloads/#java21) or higher.
+- [`Java 25`](https://www.oracle.com/java/technologies/downloads/#java25) or higher.
 
 ## Start applications
 
@@ -50,16 +50,9 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - **movies-shell**
 
-  - Open a new terminal and navigate to the `https-springboot-react/movies-shell` folder.
-  
-  - Run the command below to package the `jar`:
+  - Open a terminal and, inside the `https-springboot-react/movies-shell` folder, run the command below:
     ```bash
-    ./mvnw clean package -DskipTests
-    ```
-
-  - Run the following command to start `movies-shell`:
-    ```bash
-    ./target/movies-shell-0.0.1-SNAPSHOT.jar
+    ./mvnw clean spring-boot:run
     ```
 
   - Sample of the shell interface and execution:
@@ -135,10 +128,3 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
   ncu -u
   npm install
   ```
-
-## References
-
-- https://www.javadevjournal.com/spring-boot/spring-boot-ssl/
-- https://www.baeldung.com/spring-boot-https-self-signed-certificate
-- https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
-- https://medium.com/@danielgwilson/https-and-create-react-app-3a30ed31c904

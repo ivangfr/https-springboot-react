@@ -1,7 +1,7 @@
 package com.ivanfranchin.moviesshell.client;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.client.RestClientSsl;
+import org.springframework.boot.restclient.autoconfigure.RestClientSsl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;

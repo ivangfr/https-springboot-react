@@ -1,17 +1,17 @@
 package com.ivanfranchin.moviesshell.command;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ivanfranchin.moviesshell.client.MovieApiClient;
 import com.ivanfranchin.moviesshell.dto.AddMovieRequest;
 import com.ivanfranchin.moviesshell.dto.MovieResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.shell.standard.ShellComponent;
-import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.core.command.annotation.Command;
+import org.springframework.shell.core.command.annotation.Option;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@ShellComponent
+@Component
 public class MoviesCommands {
 
     private final MovieApiClient movieApiClient;
@@ -23,27 +23,46 @@ public class MoviesCommands {
     @Value("${movies-api.url}")
     private String movieApiUrl;
 
-    @ShellMethod("Get all movies")
+    @Command(name = "get-movies", description = "Get all movies", group = "Movies API")
     public String getMovies() {
-        ResponseEntity<List<MovieResponse>> response = movieApiClient.getMovies();
-        return String.format("%s %s", response.getStatusCode(), response.getBody());
+        try {
+            ResponseEntity<List<MovieResponse>> response = movieApiClient.getMovies();
+            return String.format("%s %s", response.getStatusCode(), response.getBody());
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 
-    @ShellMethod("Get specific movie")
-    public String getMovie(String imdbId) {
-        ResponseEntity<MovieResponse> response = movieApiClient.getMovie(imdbId);
-        return String.format("%s %s", response.getStatusCode(), response.getBody());
+    @Command(name = "get-movie", description = "Get specific movie", group = "Movies API")
+    public String getMovie(@Option(longName = "imdbId", required = true) String imdbId) {
+        try {
+            ResponseEntity<MovieResponse> response = movieApiClient.getMovie(imdbId);
+            return String.format("%s %s", response.getStatusCode(), response.getBody());
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 
-    @ShellMethod("Add movie")
-    public String addMovie(String imdbId, String title, String director, int year) throws JsonProcessingException {
-        ResponseEntity<MovieResponse> response = movieApiClient.addMovie(new AddMovieRequest(imdbId, title, director, year));
-        return String.format("%s %s", response.getStatusCode(), response.getBody());
+    @Command(name = "add-movies", description = "Add movie", group = "Movies API")
+    public String addMovie(@Option(longName = "imdbId", required = true) String imdbId,
+                           @Option(longName = "title", required = true) String title,
+                           @Option(longName = "director", required = true) String director,
+                           @Option(longName = "year", required = true) int year) {
+        try {
+            ResponseEntity<MovieResponse> response = movieApiClient.addMovie(new AddMovieRequest(imdbId, title, director, year));
+            return String.format("%s %s", response.getStatusCode(), response.getBody());
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 
-    @ShellMethod("Delete movie")
-    public String deleteMovie(String imdbId) {
-        ResponseEntity<MovieResponse> response = movieApiClient.deleteMovie(imdbId);
-        return String.format("%s %s", response.getStatusCode(), response.getBody());
+    @Command(name = "delete-movies", description = "Delete movie", group = "Movies API")
+    public String deleteMovie(@Option(longName = "imdbId", required = true) String imdbId) {
+        try {
+            ResponseEntity<MovieResponse> response = movieApiClient.deleteMovie(imdbId);
+            return String.format("%s %s", response.getStatusCode(), response.getBody());
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }
