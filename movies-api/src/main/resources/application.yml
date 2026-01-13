@@ -1,12 +1,7 @@
 server:
   port: 8443
   ssl:
-    enabled: true
-    key-store: classpath:keystore.p12
-    key-store-type: PKCS12
-    key-store-password: secret
-    key-alias: localhost
-    key-password: secret
+    bundle: "web-server-bundle"
 
 spring:
   application:
@@ -18,6 +13,16 @@ spring:
     password: password
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+  ssl:
+    bundle:
+      jks:
+        web-server-bundle:
+          key:
+            alias: localhost
+          keystore:
+            location: classpath:keystore.p12
+            password: secret
+            type: PKCS12
 
 app:
   cors:

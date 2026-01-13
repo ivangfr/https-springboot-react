@@ -2,10 +2,14 @@ package com.ivanfranchin.moviesshell.command;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ivanfranchin.moviesshell.client.MovieApiClient;
+import com.ivanfranchin.moviesshell.dto.AddMovieRequest;
+import com.ivanfranchin.moviesshell.dto.MovieResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+
+import java.util.List;
 
 @ShellComponent
 public class MoviesCommands {
@@ -21,25 +25,25 @@ public class MoviesCommands {
 
     @ShellMethod("Get all movies")
     public String getMovies() {
-        ResponseEntity<String> response = movieApiClient.getMovies();
+        ResponseEntity<List<MovieResponse>> response = movieApiClient.getMovies();
         return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 
     @ShellMethod("Get specific movie")
     public String getMovie(String imdbId) {
-        ResponseEntity<String> response = movieApiClient.getMovie(imdbId);
+        ResponseEntity<MovieResponse> response = movieApiClient.getMovie(imdbId);
         return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 
     @ShellMethod("Add movie")
     public String addMovie(String imdbId, String title, String director, int year) throws JsonProcessingException {
-        ResponseEntity<String> response = movieApiClient.addMovie(imdbId, title, director, year);
+        ResponseEntity<MovieResponse> response = movieApiClient.addMovie(new AddMovieRequest(imdbId, title, director, year));
         return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 
     @ShellMethod("Delete movie")
     public String deleteMovie(String imdbId) {
-        ResponseEntity<String> response = movieApiClient.deleteMovie(imdbId);
+        ResponseEntity<MovieResponse> response = movieApiClient.deleteMovie(imdbId);
         return String.format("%s %s", response.getStatusCode(), response.getBody());
     }
 }

@@ -1,15 +1,18 @@
 spring:
   application:
     name: movies-shell
+  ssl:
+    bundle:
+      jks:
+        my-client-bundle:
+          truststore:
+            location: classpath:keystore.p12
+            password: secret
   shell:
     interactive:
       enabled: true
 
-http.client.ssl:
-  trust-store: keystore.p12
-  trust-store-password: secret
-
 movies-api:
-  url: https://localhost:8443/api/movies
+  url: https://localhost:8443
 
 logging.level.root: off
