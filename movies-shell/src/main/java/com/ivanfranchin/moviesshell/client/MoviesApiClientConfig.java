@@ -9,18 +9,18 @@ import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
-public class MovieApiClientConfig {
+public class MoviesApiClientConfig {
 
     @Value("${movies-api.url}")
     private String moviesApiUrl;
 
     @Bean
-    MovieApiClient movieApiClient(RestClient.Builder builder, RestClientSsl ssl) {
+    MoviesApiClient moviesApiClient(RestClient.Builder builder, RestClientSsl ssl) {
         RestClient restClient = builder.baseUrl(moviesApiUrl)
                 .apply(ssl.fromBundle("my-client-bundle"))
                 .build();
         RestClientAdapter adapter = RestClientAdapter.create(restClient);
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
-        return factory.createClient(MovieApiClient.class);
+        return factory.createClient(MoviesApiClient.class);
     }
 }

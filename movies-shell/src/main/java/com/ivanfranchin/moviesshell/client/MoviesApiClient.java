@@ -13,7 +13,7 @@ import org.springframework.web.service.annotation.PostExchange;
 import java.util.List;
 
 @HttpExchange("/api/movies")
-public interface MovieApiClient {
+public interface MoviesApiClient {
 
     @GetExchange
     ResponseEntity<List<MovieResponse>> getMovies();
