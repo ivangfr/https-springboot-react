@@ -1,80 +1,90 @@
-import React, { Component } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { Container, Grid, Paper, Typography, Divider } from '@mui/material'
 import VideocamIcon from '@mui/icons-material/Videocam'
 import MovieForm from './MovieForm'
 import MovieTable from './MovieTable'
 import { moviesApi } from '../misc/MoviesApi'
 
-class MoviePage extends Component {
-  formInitialState = {
-    imdbId: '',
-    title: '',
-    director: '',
-    year: '',
+const formInitialState = {
+  imdbId: '',
+  title: '',
+  director: '',
+  year: '',
+  imdbIdError: false,
+  titleError: false,
+  directorError: false,
+  yearError: false,
+}
 
-    imdbIdError: false,
-    titleError: false,
-    directorError: false,
-    yearError: false,
-  }
+function MoviePage() {
+  const [movies, setMovies] = useState([])
+  const [form, setForm] = useState({ ...formInitialState })
 
-  state = {
-    movies: [],
-    form: { ...this.formInitialState },
-  }
-
-  componentDidMount() {
-    this.handleGetMovies()
-  }
-
-  handleChange = (e) => {
-    const { id, value } = e.target
-    const form = { ...this.state.form }
-    form[id] = value
-    this.setState({ form })
-  }
-
-  handleGetMovies = () => {
+  const handleGetMovies = useCallback(() => {
     moviesApi.getMovies()
       .then(response => {
-        const movies = response.data
-        this.setState({ movies })
+        setMovies(response.data)
       })
       .catch(error => {
         console.log(error)
       })
+  }, [])
+
+  useEffect(() => {
+    handleGetMovies()
+  }, [handleGetMovies])
+
+  const handleChange = (e) => {
+    const { id, value } = e.target
+    setForm(prev => ({ ...prev, [id]: value }))
   }
 
-  handleSaveMovie = () => {
-    if (!this.isValidForm()) {
+  const clearForm = () => {
+    setForm({ ...formInitialState })
+  }
+
+  const isValidForm = () => {
+    const imdbIdError = form.imdbId.trim() === ''
+    const titleError = form.title.trim() === ''
+    const directorError = form.director.trim() === ''
+    const yearValue = parseInt(form.year, 10)
+    const yearError = isNaN(yearValue) || yearValue < 1888 || yearValue > new Date().getFullYear()
+
+    setForm(prev => ({ ...prev, imdbIdError, titleError, directorError, yearError }))
+
+    return !(imdbIdError || titleError || directorError || yearError)
+  }
+
+  const handleSaveMovie = () => {
+    if (!isValidForm()) {
       return
     }
 
-    const { imdbId, title, director, year } = this.state.form
+    const { imdbId, title, director, year } = form
     const movie = { imdbId, title, director, year }
 
     moviesApi.saveMovie(movie)
       .then(() => {
-        this.clearForm()
-        this.handleGetMovies()
+        clearForm()
+        handleGetMovies()
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  handleDeleteMovie = (id) => {
+  const handleDeleteMovie = (id) => {
     moviesApi.deleteMovie(id)
       .then(() => {
-        this.handleGetMovies()
+        handleGetMovies()
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  handleEditMovie = (movie) => {
-    const form = {
+  const handleEditMovie = (movie) => {
+    setForm({
       imdbId: movie.imdbId,
       title: movie.title,
       director: movie.director,
@@ -83,62 +93,37 @@ class MoviePage extends Component {
       titleError: false,
       directorError: false,
       yearError: false,
-    }
-    this.setState({ form })
-  }
-
-  clearForm = () => {
-    this.setState({
-      form: { ...this.formInitialState }
     })
   }
 
-  isValidForm = () => {
-    const form = { ...this.state.form }
-    const imdbIdError = form.imdbId.trim() === ''
-    const titleError = form.title.trim() === ''
-    const directorError = form.director.trim() === ''
-    const yearError = form.year.trim() === ''
-
-    form.imdbIdError = imdbIdError
-    form.titleError = titleError
-    form.directorError = directorError
-    form.yearError = yearError
-
-    this.setState({ form })
-    return (imdbIdError || titleError || directorError || yearError) ? false : true
-  }
-
-  render() {
-    return (
-      <Container sx={{ mt: 3 }}>
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Paper sx={{ p: 2 }}>
-              <Typography variant='h5' sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <VideocamIcon />
-                Movies
-              </Typography>
-              <Divider sx={{ my: 1 }} />
-              <MovieForm
-                form={this.state.form}
-                handleChange={this.handleChange}
-                handleSaveMovie={this.handleSaveMovie}
-                clearForm={this.clearForm}
-              />
-            </Paper>
-          </Grid>
-          <Grid size={{ xs: 12, md: 8 }}>
-            <MovieTable
-              movies={this.state.movies}
-              handleDeleteMovie={this.handleDeleteMovie}
-              handleEditMovie={this.handleEditMovie}
+  return (
+    <Container sx={{ mt: 3 }}>
+      <Grid container spacing={2}>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <Paper sx={{ p: 2 }}>
+            <Typography variant='h5' sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <VideocamIcon />
+              Movies
+            </Typography>
+            <Divider sx={{ my: 1 }} />
+            <MovieForm
+              form={form}
+              handleChange={handleChange}
+              handleSaveMovie={handleSaveMovie}
+              clearForm={clearForm}
             />
-          </Grid>
+          </Paper>
         </Grid>
-      </Container>
-    )
-  }
+        <Grid size={{ xs: 12, md: 8 }}>
+          <MovieTable
+            movies={movies}
+            handleDeleteMovie={handleDeleteMovie}
+            handleEditMovie={handleEditMovie}
+          />
+        </Grid>
+      </Grid>
+    </Container>
+  )
 }
 
 export default MoviePage

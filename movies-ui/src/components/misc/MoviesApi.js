@@ -23,5 +23,5 @@ function deleteMovie(id) {
 // -- Axios
 
 const instance = axios.create({
-  baseURL: 'https://localhost:8443'
+  baseURL: import.meta.env.VITE_API_BASE_URL ?? 'https://localhost:8443'
 })

@@ -40,6 +40,7 @@ function MovieForm({ form, handleChange, handleSaveMovie, clearForm }) {
         onChange={handleChange}
         value={form.year}
         error={form.yearError}
+        helperText={form.yearError ? `Enter a year between 1888 and ${new Date().getFullYear()}` : ''}
       />
       <Stack direction='row' spacing={1}>
         <Button fullWidth type='submit' variant='contained' color='primary'>

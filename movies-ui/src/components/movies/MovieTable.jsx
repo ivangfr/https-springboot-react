@@ -11,7 +11,9 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 
 function MovieTable({ movies, handleDeleteMovie, handleEditMovie }) {
-  const movieList = movies && movies.map(movie => {
+  const hasMovies = movies && movies.length > 0
+
+  const movieList = hasMovies && movies.map(movie => {
     return (
       <TableRow
         key={movie.imdbId}
@@ -46,6 +48,13 @@ function MovieTable({ movies, handleDeleteMovie, handleEditMovie }) {
       </TableHead>
       <TableBody>
         {movieList}
+        {!hasMovies && (
+          <TableRow>
+            <TableCell colSpan={5} align='center' sx={{ color: 'text.secondary', py: 3 }}>
+              No movies found
+            </TableCell>
+          </TableRow>
+        )}
       </TableBody>
     </Table>
   )
