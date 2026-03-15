@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Container, Grid, Segment, Header, Divider, Icon } from 'semantic-ui-react'
+import { Container, Grid, Paper, Typography, Divider } from '@mui/material'
+import VideocamIcon from '@mui/icons-material/Videocam'
 import MovieForm from './MovieForm'
 import MovieTable from './MovieTable'
 import { moviesApi } from '../misc/MoviesApi'
@@ -110,30 +111,30 @@ class MoviePage extends Component {
 
   render() {
     return (
-      <Container>
-        <Grid>
-          <Grid.Column mobile={16} tablet={16} computer={4}>
-            <Segment>
-              <Header as='h2'>
-                <Icon name='video camera' />
-                <Header.Content>Movies</Header.Content>
-              </Header>
-              <Divider />
+      <Container sx={{ mt: 3 }}>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Paper sx={{ p: 2 }}>
+              <Typography variant='h5' sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <VideocamIcon />
+                Movies
+              </Typography>
+              <Divider sx={{ my: 1 }} />
               <MovieForm
                 form={this.state.form}
                 handleChange={this.handleChange}
                 handleSaveMovie={this.handleSaveMovie}
                 clearForm={this.clearForm}
               />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column mobile={16} tablet={16} computer={12}>
+            </Paper>
+          </Grid>
+          <Grid size={{ xs: 12, md: 8 }}>
             <MovieTable
               movies={this.state.movies}
               handleDeleteMovie={this.handleDeleteMovie}
               handleEditMovie={this.handleEditMovie}
             />
-          </Grid.Column>
+          </Grid>
         </Grid>
       </Container>
     )

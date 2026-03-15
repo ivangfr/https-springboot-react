@@ -83,7 +83,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
     Now, you should see:
 
-    ![movies-ui](documentation/movies-ui.jpeg)
+    ![movies-ui](documentation/movies-ui.png)
 
     > **Note:** In case `movies-ui` cannot communicate with `movies-api`:
     > - Open `movies-api` Swagger website: https://localhost:8443/swagger-ui.html
@@ -127,4 +127,17 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
   npm i -g npm-check-updates
   ncu -u
   npm install
+  ```
+
+## How to reduce documentation images
+
+- Take the screenshot
+- Go to a terminal
+- Run [pngquant](https://pngquant.org):
+  ```bash
+  pngquant --quality=65-90 --speed 1 screenshot.png
+  ```
+- Run [optipng](http://optipng.sourceforge.net):
+  ```bash
+  optipng -o7 screenshot.png
   ```

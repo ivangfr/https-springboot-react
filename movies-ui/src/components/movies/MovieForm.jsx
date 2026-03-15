@@ -1,35 +1,39 @@
 import React from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import { TextField, Button, Stack } from '@mui/material'
 
 function MovieForm({ form, handleChange, handleSaveMovie, clearForm }) {
   return (
-    <Form>
-      <Form.Input
-        fluid
+    <Stack spacing={2} component='form' noValidate onSubmit={(e) => { e.preventDefault(); handleSaveMovie() }}>
+      <TextField
+        fullWidth
+        size='small'
         label='ImdbID'
         id='imdbId'
         onChange={handleChange}
         value={form.imdbId}
         error={form.imdbIdError}
       />
-      <Form.Input
-        fluid
+      <TextField
+        fullWidth
+        size='small'
         label='Title'
         id='title'
         onChange={handleChange}
         value={form.title}
         error={form.titleError}
       />
-      <Form.Input
-        fluid
+      <TextField
+        fullWidth
+        size='small'
         label='Director'
         id='director'
         onChange={handleChange}
         value={form.director}
         error={form.directorError}
       />
-      <Form.Input
-        fluid
+      <TextField
+        fullWidth
+        size='small'
         label='Year'
         id='year'
         type='number'
@@ -37,12 +41,15 @@ function MovieForm({ form, handleChange, handleSaveMovie, clearForm }) {
         value={form.year}
         error={form.yearError}
       />
-      <Button.Group fluid>
-        <Button positive onClick={handleSaveMovie}>Save</Button>
-        <Button.Or />
-        <Button onClick={clearForm}>Cancel</Button>
-      </Button.Group>
-    </Form>
+      <Stack direction='row' spacing={1}>
+        <Button fullWidth type='submit' variant='contained' color='primary'>
+          Save
+        </Button>
+        <Button fullWidth type='button' variant='outlined' onClick={clearForm}>
+          Cancel
+        </Button>
+      </Stack>
+    </Stack>
   )
 }
 
