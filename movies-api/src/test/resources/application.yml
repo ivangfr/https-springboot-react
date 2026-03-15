@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: movies-api
+
+app:
+  cors:
+    allowed-origins: http://localhost:3443
