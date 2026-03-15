@@ -155,8 +155,13 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 ## How to reduce documentation images
 
 - Take the screenshot
-- Go to a terminal
-- Run [pngquant](https://pngquant.org):
+- In a terminal, run the following [pngquant](https://pngquant.org) command:
   ```bash
   pngquant --quality=65-90 --speed 1 screenshot.png
   ```
+
+## Support
+
+If you find this project helpful, consider buying me a coffee to support future development. Thanks you! ❤️
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/ivan.franchin)
