@@ -39,7 +39,7 @@ public class MoviesCommands {
         }
     }
 
-    @Command(name = "add-movies", description = "Add movie", group = "Movies API")
+    @Command(name = "add-movie", description = "Add movie", group = "Movies API")
     public String addMovie(@Option(longName = "imdbId", required = true) String imdbId,
                            @Option(longName = "title", required = true) String title,
                            @Option(longName = "director", required = true) String director,
@@ -52,7 +52,7 @@ public class MoviesCommands {
         }
     }
 
-    @Command(name = "delete-movies", description = "Delete movie", group = "Movies API")
+    @Command(name = "delete-movie", description = "Delete movie", group = "Movies API")
     public String deleteMovie(@Option(longName = "imdbId", required = true) String imdbId) {
         try {
             ResponseEntity<MovieResponse> response = moviesApiClient.deleteMovie(imdbId);

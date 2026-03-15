@@ -11,11 +11,9 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 @Configuration
 public class MoviesApiClientConfig {
 
-    @Value("${movies-api.url}")
-    private String moviesApiUrl;
-
     @Bean
-    MoviesApiClient moviesApiClient(RestClient.Builder builder, RestClientSsl ssl) {
+    MoviesApiClient moviesApiClient(RestClient.Builder builder, RestClientSsl ssl,
+                                    @Value("${movies-api.url}") String moviesApiUrl) {
         RestClient restClient = builder.baseUrl(moviesApiUrl)
                 .apply(ssl.fromBundle("my-client-bundle"))
                 .build();

@@ -1,6 +1,7 @@
 package com.ivanfranchin.moviesapi.movie.model;
 
 import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
@@ -13,14 +14,15 @@ public class Movie {
     private String imdbId;
     private String title;
     private String director;
-    private String year;
+    @Column(name = "movie_year")
+    private Integer year;
 
     public static Movie from(AddMovieRequest addMovieRequest) {
         Movie movie = new Movie();
         movie.setImdbId(addMovieRequest.imdbId());
         movie.setTitle(addMovieRequest.title());
         movie.setDirector(addMovieRequest.director());
-        movie.setYear(String.valueOf(addMovieRequest.year()));
+        movie.setYear(addMovieRequest.year());
         return movie;
     }
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -29,7 +28,7 @@ public class MoviesController {
     public List<MovieResponse> getMovies() {
         return movieService.getMovies().stream()
                 .map(MovieResponse::from)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @GetMapping("/{imdbId}")

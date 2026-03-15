@@ -38,13 +38,13 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   - Once accessed for the first time, the following page will appear:
 
-    ![your-connection-is-not-private-8443](documentation/your-connection-is-not-private-8443.jpeg)
+    ![your-connection-is-not-private-8443](documentation/your-connection-is-not-private-8443.png)
 
   - Click `Advanced` > `Proceed to localhost (unsafe)`.
 
     Now, you should see:
 
-    ![movies-api-swagger](documentation/movies-api-swagger.jpeg)
+    ![movies-api-swagger](documentation/movies-api-swagger.png)
   
   - To re-enable the security warning saying `Your connection is not private` for `https://localhost:8443/swagger-ui.html`, click `Not Secure` (in the address bar) > `Re-enable warnings`.
 
@@ -57,7 +57,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   - Sample of the shell interface and execution:
 
-    ![movies-shell](documentation/movies-shell.jpeg)
+    ![movies-shell](documentation/movies-shell.png)
 
 - **movies-ui**
 
@@ -77,7 +77,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   - Once accessed for the first time, the following page will appear:
 
-    ![your-connection-is-not-private-3443](documentation/your-connection-is-not-private-3443.jpeg)
+    ![your-connection-is-not-private-3443](documentation/your-connection-is-not-private-3443.png)
 
   - Click `Advanced` > `Proceed to localhost (unsafe)`
 
@@ -136,8 +136,4 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 - Run [pngquant](https://pngquant.org):
   ```bash
   pngquant --quality=65-90 --speed 1 screenshot.png
-  ```
-- Run [optipng](http://optipng.sourceforge.net):
-  ```bash
-  optipng -o7 screenshot.png
   ```

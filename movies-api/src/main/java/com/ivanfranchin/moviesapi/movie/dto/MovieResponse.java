@@ -9,7 +9,7 @@ public record MovieResponse(String imdbId, String title, String director, Intege
                 movie.getImdbId(),
                 movie.getTitle(),
                 movie.getDirector(),
-                Integer.valueOf(movie.getYear())
+                movie.getYear()
         );
     }
 }
