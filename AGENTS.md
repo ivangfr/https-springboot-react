@@ -79,7 +79,7 @@ npm test -- --reporter=verbose --testPathPattern="App"
 npm test -- --reporter=verbose -t "renders"
 ```
 
-> HTTPS is enabled via Vite's built-in `--https` flag in the `start` script in `package.json`.
+> HTTPS is enabled via `@vitejs/plugin-basic-ssl` in `vite.config.js`.
 
 ---
 
@@ -89,7 +89,7 @@ npm test -- --reporter=verbose -t "renders"
 |---|---|---|---|
 | `movies-api` | Java 25 | Spring Boot 4.0.3 | Lombok, H2, Spring Data JPA, springdoc-openapi 3.0.2 |
 | `movies-shell` | Java 25 | Spring Boot 4.0.3 | Spring Shell 4.0.1, Spring RestClient |
-| `movies-ui` | JavaScript (ES2020+, no TypeScript) | React 19.2.4 | Vite 6, @vitejs/plugin-react, axios 1.13.x, MUI 7 (@mui/material, @mui/icons-material) |
+| `movies-ui` | JavaScript (ES2020+, no TypeScript) | React 19.2.4 | Vite 8, @vitejs/plugin-react, axios 1.13.x, MUI 7 (@mui/material, @mui/icons-material) |
 | Java build | — | Maven 3.9.12 (wrapper) | — |
 
 ---
@@ -147,7 +147,7 @@ npm test -- --reporter=verbose -t "renders"
 - **Indentation**: 2 spaces
 - **Quotes**: single quotes for all string literals and JSX prop values
 - **Semicolons**: omit where possible (no trailing `;` on import/export lines in component files)
-- No Prettier config — ESLint config is inline in `package.json` (`eslintConfig` field)
+- No Prettier config — no ESLint config present
 
 ### Imports
 Order within a file (no blank lines required between groups, but follow this sequence):
@@ -189,7 +189,7 @@ No barrel/index files — always use explicit relative paths.
 ### JavaScript
 - Framework: **Vitest** + **@testing-library/react** + **@testing-library/jest-dom**
 - No existing component tests — write `.test.jsx` files alongside components
-- Setup file: `src/setupTests.js` (already imports `@testing-library/jest-dom`)
+- Setup file: `src/vitest.setup.js` (already imports `@testing-library/jest-dom`)
 - Test config lives in `vite.config.js` under the `test` key (`environment: 'jsdom'`, `globals: true`)
 
 ---
