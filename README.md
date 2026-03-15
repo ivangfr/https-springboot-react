@@ -96,6 +96,29 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where they are running and press `Ctrl+C`.
 
+## Running Tests
+
+- **movies-api**
+
+  - Open a terminal and, inside the `https-springboot-react/movies-api` folder, run the command below:
+    ```bash
+    ./mvnw test
+    ```
+
+- **movies-shell**
+
+  - Open a terminal and, inside the `https-springboot-react/movies-shell` folder, run the command below:
+    ```bash
+    ./mvnw test
+    ```
+
+- **movies-ui**
+
+  - Open a terminal and, inside the `https-springboot-react/movies-ui` folder, run the command below:
+    ```bash
+    npm test
+    ```
+
 ## Create PKCS12 self-signed certificate
 
 - In order to create a [`PKCS12`](https://en.wikipedia.org/wiki/PKCS_12) certificate, run the following command:
