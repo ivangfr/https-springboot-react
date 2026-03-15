@@ -18,7 +18,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### movies-ui
 
-  `React` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`Semantic UI React`](https://react.semantic-ui.com/) as CSS-styled framework.
+  `React` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`MUI`](https://mui.com/) as UI component library.
 
 ## Prerequisites
 
