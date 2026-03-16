@@ -102,14 +102,14 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
   - Open a terminal and, inside the `https-springboot-react/movies-api` folder, run the command below:
     ```bash
-    ./mvnw test
+    ./mvnw clean test
     ```
 
 - **movies-shell**
 
   - Open a terminal and, inside the `https-springboot-react/movies-shell` folder, run the command below:
     ```bash
-    ./mvnw test
+    ./mvnw clean test
     ```
 
 - **movies-ui**
