@@ -11,8 +11,8 @@
     <groupId>com.ivanfranchin</groupId>
     <artifactId>movies-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>movies-api</name>
-    <description>Demo project for Spring Boot</description>
+	<name/>
+	<description/>
     <url/>
     <licenses>
         <license/>
@@ -72,17 +72,17 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-restclient-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-restclient</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

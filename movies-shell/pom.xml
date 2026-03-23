@@ -11,8 +11,8 @@
     <groupId>com.ivanfranchin</groupId>
     <artifactId>movies-shell</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>movies-shell</name>
-    <description>Demo project for Spring Boot</description>
+	<name/>
+	<description/>
     <url/>
     <licenses>
         <license/>
