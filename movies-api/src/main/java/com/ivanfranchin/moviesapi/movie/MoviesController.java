@@ -1,8 +1,8 @@
 package com.ivanfranchin.moviesapi.movie;
 
-import com.ivanfranchin.moviesapi.movie.model.Movie;
 import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
+import com.ivanfranchin.moviesapi.movie.model.Movie;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -45,10 +45,10 @@ public class MoviesController {
         return MovieResponse.from(movie);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{imdbId}")
-    public MovieResponse deleteMovie(@PathVariable String imdbId) {
+    public void deleteMovie(@PathVariable String imdbId) {
         Movie movie = movieService.validateAndGetMovie(imdbId);
         movieService.deleteMovie(movie);
-        return MovieResponse.from(movie);
     }
 }

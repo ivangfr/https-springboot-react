@@ -2,7 +2,6 @@ package com.ivanfranchin.moviesapi;
 
 import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.TestRestTemplate;
@@ -117,15 +116,13 @@ class MoviesApiIntegrationTests {
     // -- DELETE /api/movies/{imdbId} --
 
     @Test
-    public void testDeleteMovieReturnsDeletedMovieAndRemovesIt() {
+    public void testDeleteMovieReturns204AndRemovesIt() {
         addMovie("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
 
-        ResponseEntity<MovieResponse> deleteResponse = restTemplate.exchange(
-                MOVIES_URL + "/tt0120804", HttpMethod.DELETE, HttpEntity.EMPTY, MovieResponse.class);
+        ResponseEntity<Void> deleteResponse = restTemplate.exchange(
+                MOVIES_URL + "/tt0120804", HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
 
-        assertThat(deleteResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(deleteResponse.getBody()).isNotNull();
-        assertThat(deleteResponse.getBody().imdbId()).isEqualTo("tt0120804");
+        assertThat(deleteResponse.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
 
         // Verify movie is gone
         ResponseEntity<String> getResponse = restTemplate.getForEntity(MOVIES_URL + "/tt0120804", String.class);

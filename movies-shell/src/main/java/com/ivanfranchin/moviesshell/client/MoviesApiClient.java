@@ -25,5 +25,5 @@ public interface MoviesApiClient {
     ResponseEntity<MovieResponse> addMovie(@RequestBody AddMovieRequest addMovieRequest);
 
     @DeleteExchange("/{imdbId}")
-    ResponseEntity<MovieResponse> deleteMovie(@PathVariable String imdbId);
+    ResponseEntity<Void> deleteMovie(@PathVariable String imdbId);
 }

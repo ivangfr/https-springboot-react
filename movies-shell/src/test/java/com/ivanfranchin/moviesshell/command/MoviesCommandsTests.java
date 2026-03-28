@@ -129,15 +129,12 @@ class MoviesCommandsTests {
     // ------------------------------------------------------------------
 
     @Test
-    public void deleteMovie_whenMovieExists_thenOutputContainsStatusAndDeletedMovie() throws Exception {
-        MovieResponse deleted = new MovieResponse("tt0111161", "The Shawshank Redemption", "Frank Darabont", 1994);
+    public void deleteMovie_whenMovieExists_thenOutputContains204() throws Exception {
         when(moviesApiClient.deleteMovie("tt0111161"))
-                .thenReturn(ResponseEntity.ok(deleted));
+                .thenReturn(ResponseEntity.noContent().build());
 
         ShellAssertions.assertThat(shellTestClient.sendCommand("delete-movie --imdbId tt0111161"))
-                .containsText("200")
-                .containsText("tt0111161")
-                .containsText("The Shawshank Redemption");
+                .containsText("204");
     }
 
     @Test

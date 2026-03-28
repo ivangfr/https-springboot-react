@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
 import com.ivanfranchin.moviesapi.movie.model.Movie;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -160,14 +159,12 @@ class MoviesControllerTests {
     // -- DELETE /api/movies/{imdbId} --
 
     @Test
-    public void testDeleteMovieReturnsDeletedMovie() throws Exception {
+    public void testDeleteMovieReturns204() throws Exception {
         Movie movie = buildMovie("tt0120804");
         when(movieService.validateAndGetMovie("tt0120804")).thenReturn(movie);
 
         mockMvc.perform(delete("/api/movies/tt0120804"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.imdbId").value("tt0120804"))
-                .andExpect(jsonPath("$.title").value("Resident Evil"));
+                .andExpect(status().isNoContent());
 
         verify(movieService).deleteMovie(movie);
     }

@@ -55,8 +55,8 @@ public class MoviesCommands {
     @Command(name = "delete-movie", description = "Delete movie", group = "Movies API")
     public String deleteMovie(@Option(longName = "imdbId", required = true) String imdbId) {
         try {
-            ResponseEntity<MovieResponse> response = moviesApiClient.deleteMovie(imdbId);
-            return String.format("%s %s", response.getStatusCode(), response.getBody());
+            ResponseEntity<Void> response = moviesApiClient.deleteMovie(imdbId);
+            return String.valueOf(response.getStatusCode());
         } catch (Exception e) {
             return "Error: " + e.getMessage();
         }
