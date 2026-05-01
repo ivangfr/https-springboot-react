@@ -23,7 +23,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   `React` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`MUI`](https://mui.com/) as UI component library.
 
-## Project Diagram
+## Architecture
 
 ```mermaid
 flowchart LR
