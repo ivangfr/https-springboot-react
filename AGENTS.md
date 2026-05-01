@@ -97,19 +97,20 @@ npm test -- --reporter=verbose -t "renders"
 ## Java Code Style
 
 ### Formatting
-- **Indentation**: 4 spaces (no tabs)
+- **Indentation**: 2 spaces (Google Java Format default) — never tabs
 - **Braces**: opening brace on the same line as the declaration (K&R style)
 - **Annotations**: each annotation on its own line, directly above the annotated element
 - One blank line between methods; no trailing blank lines inside method bodies
 
 ### Imports
-- No wildcard imports — import each class individually
-- Import order (blank line between groups):
-  1. Project classes (`com.ivanfranchin.*`)
+- No wildcard imports (enforced by `forbidWildcardImports` Spotless rule) — import each class individually
+- Unused imports are automatically removed (enforced by `removeUnusedImports` Spotless rule)
+- Annotations are formatted (enforced by `formatAnnotations` Spotless rule)
+- Import order (matches Spotless config, blank line between groups):
+  1. `java.*`
   2. `jakarta.*`
-  3. `lombok.*`
-  4. `org.springframework.*`
-  5. `java.*`
+  3. `org.*`
+  4. `com.*`
 
 ### Naming
 - **Classes/Interfaces**: `PascalCase` — `MoviesController`, `MovieService`

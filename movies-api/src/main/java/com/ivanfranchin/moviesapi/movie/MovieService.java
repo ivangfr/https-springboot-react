@@ -1,16 +1,16 @@
 package com.ivanfranchin.moviesapi.movie;
 
-import com.ivanfranchin.moviesapi.movie.model.Movie;
-
 import java.util.List;
+
+import com.ivanfranchin.moviesapi.movie.model.Movie;
 
 public interface MovieService {
 
-    Movie validateAndGetMovie(String imdbId);
+  Movie validateAndGetMovie(String imdbId);
 
-    List<Movie> getMovies();
+  List<Movie> getMovies();
 
-    Movie saveMovie(Movie movie);
+  Movie saveMovie(Movie movie);
 
-    void deleteMovie(Movie movie);
+  void deleteMovie(Movie movie);
 }

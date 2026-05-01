@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class MoviesApiApplicationTests {
 
-    @Test
-    public void contextLoads() {
-    }
+  @Test
+  public void contextLoads() {}
 }

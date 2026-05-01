@@ -1,28 +1,30 @@
 package com.ivanfranchin.moviesapi.movie.model;
 
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
+
 import lombok.Data;
 
 @Data
 @Entity
 public class Movie {
 
-    @Id
-    private String imdbId;
-    private String title;
-    private String director;
-    @Column(name = "movie_year")
-    private Integer year;
+  @Id private String imdbId;
+  private String title;
+  private String director;
 
-    public static Movie from(AddMovieRequest addMovieRequest) {
-        Movie movie = new Movie();
-        movie.setImdbId(addMovieRequest.imdbId());
-        movie.setTitle(addMovieRequest.title());
-        movie.setDirector(addMovieRequest.director());
-        movie.setYear(addMovieRequest.year());
-        return movie;
-    }
+  @Column(name = "movie_year")
+  private Integer year;
+
+  public static Movie from(AddMovieRequest addMovieRequest) {
+    Movie movie = new Movie();
+    movie.setImdbId(addMovieRequest.imdbId());
+    movie.setTitle(addMovieRequest.title());
+    movie.setDirector(addMovieRequest.director());
+    movie.setYear(addMovieRequest.year());
+    return movie;
+  }
 }

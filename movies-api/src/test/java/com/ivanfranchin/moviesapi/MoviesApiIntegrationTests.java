@@ -1,7 +1,7 @@
 package com.ivanfranchin.moviesapi;
 
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
-import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.TestRestTemplate;
@@ -14,126 +14,137 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
+import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestRestTemplate
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class MoviesApiIntegrationTests {
 
-    @Autowired
-    private TestRestTemplate restTemplate;
+  @Autowired private TestRestTemplate restTemplate;
 
-    private static final String MOVIES_URL = "/api/movies";
+  private static final String MOVIES_URL = "/api/movies";
 
-    // -- helpers --
+  // -- helpers --
 
-    private MovieResponse addMovie(String imdbId, String title, String director, int year) {
-        AddMovieRequest request = new AddMovieRequest(imdbId, title, director, year);
-        ResponseEntity<MovieResponse> response = restTemplate.postForEntity(MOVIES_URL, request, MovieResponse.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        return response.getBody();
-    }
+  private MovieResponse addMovie(String imdbId, String title, String director, int year) {
+    AddMovieRequest request = new AddMovieRequest(imdbId, title, director, year);
+    ResponseEntity<MovieResponse> response =
+        restTemplate.postForEntity(MOVIES_URL, request, MovieResponse.class);
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    return response.getBody();
+  }
 
-    // -- GET /api/movies --
+  // -- GET /api/movies --
 
-    @Test
-    public void testGetMoviesReturnsEmptyListWhenNoMoviesExist() {
-        ResponseEntity<MovieResponse[]> response = restTemplate.getForEntity(MOVIES_URL, MovieResponse[].class);
+  @Test
+  public void testGetMoviesReturnsEmptyListWhenNoMoviesExist() {
+    ResponseEntity<MovieResponse[]> response =
+        restTemplate.getForEntity(MOVIES_URL, MovieResponse[].class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEmpty();
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(response.getBody()).isEmpty();
+  }
 
-    @Test
-    public void testGetMoviesReturnsPersistedMovies() {
-        addMovie("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
-        addMovie("tt0119698", "Princess Mononoke", "Hayao Miyazaki", 1997);
+  @Test
+  public void testGetMoviesReturnsPersistedMovies() {
+    addMovie("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
+    addMovie("tt0119698", "Princess Mononoke", "Hayao Miyazaki", 1997);
 
-        ResponseEntity<MovieResponse[]> response = restTemplate.getForEntity(MOVIES_URL, MovieResponse[].class);
+    ResponseEntity<MovieResponse[]> response =
+        restTemplate.getForEntity(MOVIES_URL, MovieResponse[].class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).hasSize(2);
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(response.getBody()).hasSize(2);
+  }
 
-    // -- GET /api/movies/{imdbId} --
+  // -- GET /api/movies/{imdbId} --
 
-    @Test
-    public void testGetMovieReturnsCorrectMovieWhenFound() {
-        addMovie("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
+  @Test
+  public void testGetMovieReturnsCorrectMovieWhenFound() {
+    addMovie("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
 
-        ResponseEntity<MovieResponse> response = restTemplate.getForEntity(MOVIES_URL + "/tt0120804", MovieResponse.class);
+    ResponseEntity<MovieResponse> response =
+        restTemplate.getForEntity(MOVIES_URL + "/tt0120804", MovieResponse.class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        MovieResponse body = response.getBody();
-        assertThat(body).isNotNull();
-        assertThat(body.imdbId()).isEqualTo("tt0120804");
-        assertThat(body.title()).isEqualTo("Resident Evil");
-        assertThat(body.director()).isEqualTo("Paul W.S. Anderson");
-        assertThat(body.year()).isEqualTo(2002);
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    MovieResponse body = response.getBody();
+    assertThat(body).isNotNull();
+    assertThat(body.imdbId()).isEqualTo("tt0120804");
+    assertThat(body.title()).isEqualTo("Resident Evil");
+    assertThat(body.director()).isEqualTo("Paul W.S. Anderson");
+    assertThat(body.year()).isEqualTo(2002);
+  }
 
-    @Test
-    public void testGetMovieReturns404WhenNotFound() {
-        ResponseEntity<String> response = restTemplate.getForEntity(MOVIES_URL + "/tt9999999", String.class);
+  @Test
+  public void testGetMovieReturns404WhenNotFound() {
+    ResponseEntity<String> response =
+        restTemplate.getForEntity(MOVIES_URL + "/tt9999999", String.class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+  }
 
-    // -- POST /api/movies --
+  // -- POST /api/movies --
 
-    @Test
-    public void testAddMovieReturns201WithCreatedMovieBody() {
-        AddMovieRequest request = new AddMovieRequest("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
+  @Test
+  public void testAddMovieReturns201WithCreatedMovieBody() {
+    AddMovieRequest request =
+        new AddMovieRequest("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
 
-        ResponseEntity<MovieResponse> response = restTemplate.postForEntity(MOVIES_URL, request, MovieResponse.class);
+    ResponseEntity<MovieResponse> response =
+        restTemplate.postForEntity(MOVIES_URL, request, MovieResponse.class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        MovieResponse body = response.getBody();
-        assertThat(body).isNotNull();
-        assertThat(body.imdbId()).isEqualTo("tt0120804");
-        assertThat(body.title()).isEqualTo("Resident Evil");
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    MovieResponse body = response.getBody();
+    assertThat(body).isNotNull();
+    assertThat(body.imdbId()).isEqualTo("tt0120804");
+    assertThat(body.title()).isEqualTo("Resident Evil");
+  }
 
-    @Test
-    public void testAddMovieReturns400WhenImdbIdIsBlank() {
-        AddMovieRequest request = new AddMovieRequest("", "Resident Evil", "Paul W.S. Anderson", 2002);
+  @Test
+  public void testAddMovieReturns400WhenImdbIdIsBlank() {
+    AddMovieRequest request = new AddMovieRequest("", "Resident Evil", "Paul W.S. Anderson", 2002);
 
-        ResponseEntity<String> response = restTemplate.postForEntity(MOVIES_URL, request, String.class);
+    ResponseEntity<String> response = restTemplate.postForEntity(MOVIES_URL, request, String.class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+  }
 
-    @Test
-    public void testAddMovieReturns400WhenYearIsNegative() {
-        AddMovieRequest request = new AddMovieRequest("tt0120804", "Resident Evil", "Paul W.S. Anderson", -1);
+  @Test
+  public void testAddMovieReturns400WhenYearIsNegative() {
+    AddMovieRequest request =
+        new AddMovieRequest("tt0120804", "Resident Evil", "Paul W.S. Anderson", -1);
 
-        ResponseEntity<String> response = restTemplate.postForEntity(MOVIES_URL, request, String.class);
+    ResponseEntity<String> response = restTemplate.postForEntity(MOVIES_URL, request, String.class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+  }
 
-    // -- DELETE /api/movies/{imdbId} --
+  // -- DELETE /api/movies/{imdbId} --
 
-    @Test
-    public void testDeleteMovieReturns204AndRemovesIt() {
-        addMovie("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
+  @Test
+  public void testDeleteMovieReturns204AndRemovesIt() {
+    addMovie("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
 
-        ResponseEntity<Void> deleteResponse = restTemplate.exchange(
-                MOVIES_URL + "/tt0120804", HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+    ResponseEntity<Void> deleteResponse =
+        restTemplate.exchange(
+            MOVIES_URL + "/tt0120804", HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
 
-        assertThat(deleteResponse.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+    assertThat(deleteResponse.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
 
-        // Verify movie is gone
-        ResponseEntity<String> getResponse = restTemplate.getForEntity(MOVIES_URL + "/tt0120804", String.class);
-        assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-    }
+    // Verify movie is gone
+    ResponseEntity<String> getResponse =
+        restTemplate.getForEntity(MOVIES_URL + "/tt0120804", String.class);
+    assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+  }
 
-    @Test
-    public void testDeleteMovieReturns404WhenNotFound() {
-        ResponseEntity<String> response = restTemplate.exchange(
-                MOVIES_URL + "/tt9999999", HttpMethod.DELETE, HttpEntity.EMPTY, String.class);
+  @Test
+  public void testDeleteMovieReturns404WhenNotFound() {
+    ResponseEntity<String> response =
+        restTemplate.exchange(
+            MOVIES_URL + "/tt9999999", HttpMethod.DELETE, HttpEntity.EMPTY, String.class);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-    }
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+  }
 }

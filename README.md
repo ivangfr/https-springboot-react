@@ -155,6 +155,22 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
   npm install
   ```
 
+## Code Formatting
+
+- **Spring Boot modules** (`movies-api` and `movies-shell`): Code is formatted using [Spotless](https://github.com/diffplug/spotless) with [Google Java Format](https://github.com/google/google-java-format). To check or apply formatting, make sure you are inside the module folder and run the following command:
+
+  - **Check formatting**:
+    ```bash
+    ./mvnw spotless:check
+    ```
+    
+  - **Auto-fix formatting**:
+    ```bash
+    ./mvnw spotless:apply
+    ```
+
+- **React module** (`movies-ui`): [TODO]
+
 ## How to optimize PNG screenshots in documentation folder
 
 \[**Medium**\] [**How I Reduce GIF and Screenshot Sizes for My Technical Articles on macOS**](https://medium.com/itnext/how-i-reduce-gif-and-screenshot-sizes-for-my-technical-articles-on-macos-7fea331afc68)

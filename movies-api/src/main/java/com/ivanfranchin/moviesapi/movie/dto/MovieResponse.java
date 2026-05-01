@@ -4,12 +4,8 @@ import com.ivanfranchin.moviesapi.movie.model.Movie;
 
 public record MovieResponse(String imdbId, String title, String director, Integer year) {
 
-    public static MovieResponse from(Movie movie) {
-        return new MovieResponse(
-                movie.getImdbId(),
-                movie.getTitle(),
-                movie.getDirector(),
-                movie.getYear()
-        );
-    }
+  public static MovieResponse from(Movie movie) {
+    return new MovieResponse(
+        movie.getImdbId(), movie.getTitle(), movie.getDirector(), movie.getYear());
+  }
 }
