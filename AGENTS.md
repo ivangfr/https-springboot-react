@@ -148,7 +148,9 @@ npm test -- --reporter=verbose -t "renders"
 - **Indentation**: 2 spaces
 - **Quotes**: single quotes for all string literals and JSX prop values
 - **Semicolons**: omit where possible (no trailing `;` on import/export lines in component files)
-- No Prettier config — no ESLint config present
+- Prettier is used for formatting with `.prettierrc` matching project style (2 spaces, single quotes, no trailing semicolons)
+- ESLint conflicts are resolved via `eslint-config-prettier`
+- `.editorconfig` ensures editor consistency across IDEs
 
 ### Imports
 Order within a file (no blank lines required between groups, but follow this sequence):

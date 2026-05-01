@@ -3,7 +3,15 @@ import { TextField, Button, Stack } from '@mui/material'
 
 function MovieForm({ form, handleChange, handleSaveMovie, clearForm }) {
   return (
-    <Stack spacing={2} component='form' noValidate onSubmit={(e) => { e.preventDefault(); handleSaveMovie() }}>
+    <Stack
+      spacing={2}
+      component='form'
+      noValidate
+      onSubmit={(e) => {
+        e.preventDefault()
+        handleSaveMovie()
+      }}
+    >
       <TextField
         fullWidth
         size='small'
@@ -40,7 +48,11 @@ function MovieForm({ form, handleChange, handleSaveMovie, clearForm }) {
         onChange={handleChange}
         value={form.year}
         error={form.yearError}
-        helperText={form.yearError ? `Enter a year between 1888 and ${new Date().getFullYear()}` : ''}
+        helperText={
+          form.yearError
+            ? `Enter a year between 1888 and ${new Date().getFullYear()}`
+            : ''
+        }
       />
       <Stack direction='row' spacing={1}>
         <Button fullWidth type='submit' variant='contained' color='primary'>

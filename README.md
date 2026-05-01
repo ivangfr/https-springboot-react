@@ -157,19 +157,33 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
 ## Code Formatting
 
-- **Spring Boot modules** (`movies-api` and `movies-shell`): Code is formatted using [Spotless](https://github.com/diffplug/spotless) with [Google Java Format](https://github.com/google/google-java-format). To check or apply formatting, make sure you are inside the module folder and run the following command:
+- **Spring Boot modules** (`movies-api` and `movies-shell`): Code is formatted using [Spotless](https://github.com/diffplug/spotless) with [Google Java Format](https://github.com/google/google-java-format).
+
+  To check or apply formatting, make sure you are inside the module folder and run the following command:
 
   - **Check formatting**:
     ```bash
     ./mvnw spotless:check
     ```
-    
+
   - **Auto-fix formatting**:
     ```bash
     ./mvnw spotless:apply
     ```
 
-- **React module** (`movies-ui`): [TODO]
+- **React module** (`movies-ui`): Code is formatted using [Prettier](https://prettier.io/) with rules aligned to the project's style guide (2-space indentation, single quotes, no trailing semicolons). ESLint conflicts are resolved via `eslint-config-prettier`. Configuration is defined in `.prettierrc` (formatting rules) and `.editorconfig` (editor consistency).
+
+  To check or apply formatting, make sure you are inside the `movies-ui` folder and run the following commands:
+
+  - **Check formatting**:
+    ```bash
+    npm run format:check
+    ```
+
+  - **Auto-fix formatting**:
+    ```bash
+    npm run format
+    ```
 
 ## How to optimize PNG screenshots in documentation folder
 

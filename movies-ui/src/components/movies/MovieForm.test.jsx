@@ -10,7 +10,7 @@ const baseForm = {
   imdbIdError: false,
   titleError: false,
   directorError: false,
-  yearError: false,
+  yearError: false
 }
 
 function renderForm(overrides = {}, handlers = {}) {
@@ -18,7 +18,7 @@ function renderForm(overrides = {}, handlers = {}) {
     form: { ...baseForm, ...overrides },
     handleChange: handlers.handleChange ?? vi.fn(),
     handleSaveMovie: handlers.handleSaveMovie ?? vi.fn(),
-    clearForm: handlers.clearForm ?? vi.fn(),
+    clearForm: handlers.clearForm ?? vi.fn()
   }
   return render(<MovieForm {...props} />)
 }
@@ -35,7 +35,12 @@ describe('MovieForm', () => {
   })
 
   it('renders field values from form prop', () => {
-    renderForm({ imdbId: 'tt1234', title: 'Inception', director: 'Nolan', year: '2010' })
+    renderForm({
+      imdbId: 'tt1234',
+      title: 'Inception',
+      director: 'Nolan',
+      year: '2010'
+    })
     expect(screen.getByLabelText(/imdbid/i)).toHaveValue('tt1234')
     expect(screen.getByLabelText(/title/i)).toHaveValue('Inception')
     expect(screen.getByLabelText(/director/i)).toHaveValue('Nolan')
@@ -45,7 +50,9 @@ describe('MovieForm', () => {
   it('calls handleChange when a field is changed', () => {
     const handleChange = vi.fn()
     renderForm({}, { handleChange })
-    fireEvent.change(screen.getByLabelText(/title/i), { target: { value: 'Dune' } })
+    fireEvent.change(screen.getByLabelText(/title/i), {
+      target: { value: 'Dune' }
+    })
     expect(handleChange).toHaveBeenCalledTimes(1)
   })
 
@@ -64,12 +71,29 @@ describe('MovieForm', () => {
   })
 
   it('shows error state on fields when error props are true', () => {
-    renderForm({ imdbIdError: true, titleError: true, directorError: true, yearError: true })
+    renderForm({
+      imdbIdError: true,
+      titleError: true,
+      directorError: true,
+      yearError: true
+    })
     // MUI sets aria-invalid on inputs when error=true
-    expect(screen.getByLabelText(/imdbid/i)).toHaveAttribute('aria-invalid', 'true')
-    expect(screen.getByLabelText(/title/i)).toHaveAttribute('aria-invalid', 'true')
-    expect(screen.getByLabelText(/director/i)).toHaveAttribute('aria-invalid', 'true')
-    expect(screen.getByLabelText(/year/i)).toHaveAttribute('aria-invalid', 'true')
+    expect(screen.getByLabelText(/imdbid/i)).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    )
+    expect(screen.getByLabelText(/title/i)).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    )
+    expect(screen.getByLabelText(/director/i)).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    )
+    expect(screen.getByLabelText(/year/i)).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    )
   })
 
   it('shows year helper text when yearError is true', () => {
@@ -79,6 +103,8 @@ describe('MovieForm', () => {
 
   it('does not show year helper text when yearError is false', () => {
     renderForm({ yearError: false })
-    expect(screen.queryByText(/enter a year between 1888/i)).not.toBeInTheDocument()
+    expect(
+      screen.queryByText(/enter a year between 1888/i)
+    ).not.toBeInTheDocument()
   })
 })

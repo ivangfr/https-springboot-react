@@ -9,9 +9,9 @@ vi.mock('axios', () => ({
     create: () => ({
       get: mockGet,
       post: mockPost,
-      delete: mockDelete,
-    }),
-  },
+      delete: mockDelete
+    })
+  }
 }))
 
 const { moviesApi } = await import('./MoviesApi')
@@ -31,7 +31,9 @@ describe('MoviesApi', () => {
     })
 
     it('returns the response', async () => {
-      const movies = [{ imdbId: 'tt0111161', title: 'The Shawshank Redemption' }]
+      const movies = [
+        { imdbId: 'tt0111161', title: 'The Shawshank Redemption' }
+      ]
       mockGet.mockResolvedValue({ data: movies })
       const response = await moviesApi.getMovies()
       expect(response.data).toEqual(movies)
@@ -40,14 +42,17 @@ describe('MoviesApi', () => {
 
   describe('saveMovie', () => {
     it('calls POST /api/movies with the movie payload and JSON header', () => {
-      const movie = { imdbId: 'tt0111161', title: 'The Shawshank Redemption', director: 'Frank Darabont', year: '1994' }
+      const movie = {
+        imdbId: 'tt0111161',
+        title: 'The Shawshank Redemption',
+        director: 'Frank Darabont',
+        year: '1994'
+      }
       mockPost.mockResolvedValue({ data: movie })
       moviesApi.saveMovie(movie)
-      expect(mockPost).toHaveBeenCalledWith(
-        '/api/movies',
-        movie,
-        { headers: { 'Content-type': 'application/json' } }
-      )
+      expect(mockPost).toHaveBeenCalledWith('/api/movies', movie, {
+        headers: { 'Content-type': 'application/json' }
+      })
     })
   })
 

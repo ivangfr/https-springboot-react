@@ -3,8 +3,18 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import MovieTable from './MovieTable'
 
 const movies = [
-  { imdbId: 'tt0111161', title: 'The Shawshank Redemption', director: 'Frank Darabont', year: 1994 },
-  { imdbId: 'tt0068646', title: 'The Godfather', director: 'Francis Ford Coppola', year: 1972 },
+  {
+    imdbId: 'tt0111161',
+    title: 'The Shawshank Redemption',
+    director: 'Frank Darabont',
+    year: 1994
+  },
+  {
+    imdbId: 'tt0068646',
+    title: 'The Godfather',
+    director: 'Francis Ford Coppola',
+    year: 1972
+  }
 ]
 
 function renderTable(overrides = {}) {
@@ -12,7 +22,7 @@ function renderTable(overrides = {}) {
     movies: movies,
     handleDeleteMovie: vi.fn(),
     handleEditMovie: vi.fn(),
-    ...overrides,
+    ...overrides
   }
   return { ...render(<MovieTable {...props} />), props }
 }

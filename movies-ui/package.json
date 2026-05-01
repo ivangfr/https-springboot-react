@@ -19,9 +19,11 @@
     "@vitejs/plugin-basic-ssl": "^2.2.0",
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "jsdom": "^29.0.1",
+    "prettier": "^3.8.3",
     "vite": "^8.0.1",
     "vitest": "^4.1.0"
   },
@@ -29,6 +31,8 @@
     "start": "vite --port 3443",
     "build": "vite build",
     "test": "vitest run",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx}\""
   }
 }

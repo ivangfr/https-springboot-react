@@ -2,6 +2,7 @@ import js from '@eslint/js'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import globals from 'globals'
+import prettierConfig from 'eslint-config-prettier'
 
 export default [
   js.configs.recommended,
@@ -37,4 +38,5 @@ export default [
       'react/prop-types': 'off',
     },
   },
+  prettierConfig,
 ]

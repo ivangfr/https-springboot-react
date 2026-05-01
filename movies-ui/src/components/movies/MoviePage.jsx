@@ -13,7 +13,7 @@ const formInitialState = {
   imdbIdError: false,
   titleError: false,
   directorError: false,
-  yearError: false,
+  yearError: false
 }
 
 function MoviePage() {
@@ -21,11 +21,12 @@ function MoviePage() {
   const [form, setForm] = useState({ ...formInitialState })
 
   const handleGetMovies = useCallback(() => {
-    moviesApi.getMovies()
-      .then(response => {
+    moviesApi
+      .getMovies()
+      .then((response) => {
         setMovies(response.data)
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
       })
   }, [])
@@ -36,7 +37,7 @@ function MoviePage() {
 
   const handleChange = (e) => {
     const { id, value } = e.target
-    setForm(prev => ({ ...prev, [id]: value }))
+    setForm((prev) => ({ ...prev, [id]: value }))
   }
 
   const clearForm = () => {
@@ -48,9 +49,18 @@ function MoviePage() {
     const titleError = form.title.trim() === ''
     const directorError = form.director.trim() === ''
     const yearValue = parseInt(form.year, 10)
-    const yearError = isNaN(yearValue) || yearValue < 1888 || yearValue > new Date().getFullYear()
+    const yearError =
+      isNaN(yearValue) ||
+      yearValue < 1888 ||
+      yearValue > new Date().getFullYear()
 
-    setForm(prev => ({ ...prev, imdbIdError, titleError, directorError, yearError }))
+    setForm((prev) => ({
+      ...prev,
+      imdbIdError,
+      titleError,
+      directorError,
+      yearError
+    }))
 
     return !(imdbIdError || titleError || directorError || yearError)
   }
@@ -63,22 +73,24 @@ function MoviePage() {
     const { imdbId, title, director, year } = form
     const movie = { imdbId, title, director, year }
 
-    moviesApi.saveMovie(movie)
+    moviesApi
+      .saveMovie(movie)
       .then(() => {
         clearForm()
         handleGetMovies()
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
       })
   }
 
   const handleDeleteMovie = (id) => {
-    moviesApi.deleteMovie(id)
+    moviesApi
+      .deleteMovie(id)
       .then(() => {
         handleGetMovies()
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
       })
   }
@@ -92,7 +104,7 @@ function MoviePage() {
       imdbIdError: false,
       titleError: false,
       directorError: false,
-      yearError: false,
+      yearError: false
     })
   }
 
@@ -101,7 +113,10 @@ function MoviePage() {
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 4 }}>
           <Paper sx={{ p: 2 }}>
-            <Typography variant='h5' sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography
+              variant='h5'
+              sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+            >
               <VideocamIcon />
               Movies
             </Typography>
