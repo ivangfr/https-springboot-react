@@ -23,6 +23,28 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   `React` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`MUI`](https://mui.com/) as UI component library.
 
+## Project Diagram
+
+```mermaid
+flowchart LR
+    subgraph "movies-ui (React)"
+        UI["movies-ui\n:3443"]
+    end
+
+    subgraph "movies-api (Spring Boot)"
+        API["movies-api\n:8443"]
+        DB[(H2 DB)]
+    end
+
+    subgraph "movies-shell (Spring Boot CLI)"
+        Shell["movies-shell\nCLI"]
+    end
+
+    UI -->|HTTPS| API
+    Shell -->|HTTPS| API
+    API -->|JDBC| DB
+```
+
 ## Prerequisites
 
 - [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
