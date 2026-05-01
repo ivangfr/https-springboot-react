@@ -2,6 +2,7 @@ package com.ivanfranchin.moviesapi;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.TestRestTemplate;
@@ -12,19 +13,24 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.annotation.DirtiesContext;
 
+import com.ivanfranchin.moviesapi.movie.MovieRepository;
 import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestRestTemplate
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class MoviesApiIntegrationTests {
 
   @Autowired private TestRestTemplate restTemplate;
+  @Autowired private MovieRepository movieRepository;
 
   private static final String MOVIES_URL = "/api/movies";
+
+  @BeforeEach
+  void cleanDatabase() {
+    movieRepository.deleteAll();
+  }
 
   // -- helpers --
 

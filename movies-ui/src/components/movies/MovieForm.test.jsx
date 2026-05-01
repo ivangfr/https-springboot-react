@@ -98,13 +98,13 @@ describe('MovieForm', () => {
 
   it('shows year helper text when yearError is true', () => {
     renderForm({ yearError: true })
-    expect(screen.getByText(/enter a year between 1888/i)).toBeInTheDocument()
+    expect(screen.getByText(/enter a year after 1888/i)).toBeInTheDocument()
   })
 
   it('does not show year helper text when yearError is false', () => {
     renderForm({ yearError: false })
     expect(
-      screen.queryByText(/enter a year between 1888/i)
+      screen.queryByText(/enter a year after 1888/i)
     ).not.toBeInTheDocument()
   })
 })

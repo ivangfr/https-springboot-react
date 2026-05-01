@@ -87,9 +87,9 @@ npm test -- --reporter=verbose -t "renders"
 
 | Module | Language | Framework | Key Version |
 |---|---|---|---|
-| `movies-api` | Java 25 | Spring Boot 4.0.5 | Lombok, H2, Spring Data JPA, springdoc-openapi 3.0.2 |
-| `movies-shell` | Java 25 | Spring Boot 4.0.5 | Spring Shell 4.0.1, Spring RestClient |
-| `movies-ui` | JavaScript (ES2020+, no TypeScript) | React 19.2.4 | Vite 8, @vitejs/plugin-react, axios 1.13.x, MUI 7 (@mui/material, @mui/icons-material) |
+| `movies-api` | Java 25 | Spring Boot 4.0.6 | Lombok, H2, Spring Data JPA, springdoc-openapi 3.0.3 |
+| `movies-shell` | Java 25 | Spring Boot 4.0.6 | Spring Shell 4.0.2, Spring RestClient |
+| `movies-ui` | JavaScript (ES2020+, no TypeScript) | React 19.2.5 | Vite 8.0.10, @vitejs/plugin-react 6.0.1, @vitejs/plugin-basic-ssl 2.3.0, axios 1.15.2, MUI 9 (@mui/material, @mui/icons-material) |
 | Java build | — | Maven 3.9.12 (wrapper) | — |
 
 ---

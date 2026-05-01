@@ -50,7 +50,7 @@ function MovieForm({ form, handleChange, handleSaveMovie, clearForm }) {
         error={form.yearError}
         helperText={
           form.yearError
-            ? `Enter a year between 1888 and ${new Date().getFullYear()}`
+            ? `Enter a year after 1888`
             : ''
         }
       />

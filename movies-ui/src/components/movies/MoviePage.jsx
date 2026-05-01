@@ -51,8 +51,7 @@ function MoviePage() {
     const yearValue = parseInt(form.year, 10)
     const yearError =
       isNaN(yearValue) ||
-      yearValue < 1888 ||
-      yearValue > new Date().getFullYear()
+      yearValue < 1888
 
     setForm((prev) => ({
       ...prev,
