@@ -9,11 +9,54 @@ The goal of this project is to play with [`HTTPS`](https://en.wikipedia.org/wiki
 
 On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-Concepts (PoCs) and articles. You can easily search for the technology you are interested in by using the filter. Who knows, perhaps I have already implemented a PoC or written an article about what you are looking for.
 
+## Project Overview
+
+```mermaid
+flowchart TB
+    subgraph users ["Users"]
+        HTTP["REST Clients"]
+        Browser["Browser"]
+    end
+
+    subgraph movies-ui ["movies-ui:3443\n(React)"]
+        UI["movies-ui"]
+    end
+
+    subgraph movies-api ["movies-api:8443\n(Spring Boot)"]
+        RestCtrl["MoviesController"]
+        SwaggerUI["Swagger UI"]
+
+        subgraph h2 ["H2"]
+            db[("movies")]
+        end
+    end
+
+    subgraph movies-shell ["movies-shell\n(Spring Boot)"]
+        Shell["movies-shell"]
+    end
+
+    Browser -->|"HTTPS :3443"| UI
+    Browser -->|"HTTPS :8443"| SwaggerUI
+    HTTP -->|"HTTPS"| RestCtrl
+    UI -->|"HTTPS"| RestCtrl
+    Shell -->|"HTTPS"| RestCtrl
+    RestCtrl -->|"JDBC"| db
+    SwaggerUI --> RestCtrl
+```
+
 ## Applications
 
 - ### movies-api
 
   `Spring Boot` Web Java application that exposes a REST API to manage movies. Its endpoints are ready to accept and serve over `HTTPS`. `movies-api` stores its data in [`H2`](https://www.h2database.com/html/main.html) memory database.
+
+  Endpoints:
+  ```
+     GET /api/movies
+     GET /api/movies/{imdbId}
+    POST /api/movies -d {"imdbId": "...", "title": "...", "director": "...", "releaseYear": ...}
+  DELETE /api/movies/{imdbId}
+  ```
 
 - ### movies-shell
 
@@ -22,28 +65,6 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 - ### movies-ui
 
   `React` frontend application where users can manage movies. All the communication with `movies-api` is over `HTTPS`. It uses [`MUI`](https://mui.com/) as UI component library.
-
-## Architecture
-
-```mermaid
-flowchart LR
-    subgraph "movies-ui (React)"
-        UI["movies-ui\n:3443"]
-    end
-
-    subgraph "movies-api (Spring Boot)"
-        API["movies-api\n:8443"]
-        DB[(H2 DB)]
-    end
-
-    subgraph "movies-shell (Spring Boot CLI)"
-        Shell["movies-shell\nCLI"]
-    end
-
-    UI -->|HTTPS| API
-    Shell -->|HTTPS| API
-    API -->|JDBC| DB
-```
 
 ## Prerequisites
 
