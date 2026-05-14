@@ -1,11 +1,9 @@
 package com.ivanfranchin.moviesapi.movie.model;
 
+import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
-
 import lombok.Data;
 
 @Data

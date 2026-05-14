@@ -1,13 +1,10 @@
 package com.ivanfranchin.moviesapi.movie;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
 import com.ivanfranchin.moviesapi.movie.model.Movie;
-
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service

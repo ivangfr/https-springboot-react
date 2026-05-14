@@ -2,6 +2,9 @@ package com.ivanfranchin.moviesapi;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.ivanfranchin.moviesapi.movie.MovieRepository;
+import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
+import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +16,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import com.ivanfranchin.moviesapi.movie.MovieRepository;
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
-import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestRestTemplate

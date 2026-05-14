@@ -1,9 +1,8 @@
 package com.ivanfranchin.moviesapi.movie.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 
 public record AddMovieRequest(
     @Schema(example = "tt0120804") @NotBlank String imdbId,

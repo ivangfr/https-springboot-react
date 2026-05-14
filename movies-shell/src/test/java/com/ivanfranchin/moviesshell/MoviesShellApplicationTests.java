@@ -1,10 +1,9 @@
 package com.ivanfranchin.moviesshell;
 
+import com.ivanfranchin.moviesshell.client.MoviesApiClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-
-import com.ivanfranchin.moviesshell.client.MoviesApiClient;
 
 // Loads the full Spring Boot application context, exercising the entire auto-configuration
 // chain — in particular MoviesApiClientConfig (RestClient, SSL bundle, movies-api.url,

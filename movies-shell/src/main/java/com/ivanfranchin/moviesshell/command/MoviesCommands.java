@@ -1,15 +1,13 @@
 package com.ivanfranchin.moviesshell.command;
 
+import com.ivanfranchin.moviesshell.client.MoviesApiClient;
+import com.ivanfranchin.moviesshell.dto.AddMovieRequest;
+import com.ivanfranchin.moviesshell.dto.MovieResponse;
 import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.shell.core.command.annotation.Command;
 import org.springframework.shell.core.command.annotation.Option;
 import org.springframework.stereotype.Component;
-
-import com.ivanfranchin.moviesshell.client.MoviesApiClient;
-import com.ivanfranchin.moviesshell.dto.AddMovieRequest;
-import com.ivanfranchin.moviesshell.dto.MovieResponse;
 
 @Component
 public class MoviesCommands {

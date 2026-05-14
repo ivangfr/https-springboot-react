@@ -9,19 +9,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
+import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
+import com.ivanfranchin.moviesapi.movie.model.Movie;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
-import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
-import com.ivanfranchin.moviesapi.movie.model.Movie;
 
 @WebMvcTest(MoviesController.class)
 class MoviesControllerTests {

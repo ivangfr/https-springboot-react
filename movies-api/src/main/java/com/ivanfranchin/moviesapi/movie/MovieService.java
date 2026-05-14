@@ -1,8 +1,7 @@
 package com.ivanfranchin.moviesapi.movie;
 
-import java.util.List;
-
 import com.ivanfranchin.moviesapi.movie.model.Movie;
+import java.util.List;
 
 public interface MovieService {
 

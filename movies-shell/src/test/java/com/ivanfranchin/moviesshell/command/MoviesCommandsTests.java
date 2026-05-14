@@ -3,8 +3,10 @@ package com.ivanfranchin.moviesshell.command;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import com.ivanfranchin.moviesshell.client.MoviesApiClient;
+import com.ivanfranchin.moviesshell.dto.AddMovieRequest;
+import com.ivanfranchin.moviesshell.dto.MovieResponse;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -15,10 +17,6 @@ import org.springframework.shell.test.ShellAssertions;
 import org.springframework.shell.test.ShellTestClient;
 import org.springframework.shell.test.autoconfigure.ShellTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-
-import com.ivanfranchin.moviesshell.client.MoviesApiClient;
-import com.ivanfranchin.moviesshell.dto.AddMovieRequest;
-import com.ivanfranchin.moviesshell.dto.MovieResponse;
 
 @ShellTest
 @EnableCommand(MoviesCommands.class)

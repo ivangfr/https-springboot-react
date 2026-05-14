@@ -6,19 +6,17 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
+import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
+import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
+import com.ivanfranchin.moviesapi.movie.model.Movie;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
-import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
-import com.ivanfranchin.moviesapi.movie.model.Movie;
 
 @ExtendWith(SpringExtension.class)
 @Import(MovieServiceImpl.class)
