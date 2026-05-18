@@ -11,7 +11,7 @@
     <groupId>com.ivanfranchin</groupId>
     <artifactId>movies-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name/>
+	<name>movies-api</name>
 	<description/>
     <url/>
     <licenses>
