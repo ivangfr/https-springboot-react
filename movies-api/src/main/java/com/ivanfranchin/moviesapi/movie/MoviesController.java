@@ -37,7 +37,7 @@ public class MoviesController {
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
   public MovieResponse addMovie(@Valid @RequestBody AddMovieRequest addMovieRequest) {
-    Movie movie = Movie.from(addMovieRequest);
+    Movie movie = addMovieRequest.toDomain();
     movie = movieService.saveMovie(movie);
     return MovieResponse.from(movie);
   }

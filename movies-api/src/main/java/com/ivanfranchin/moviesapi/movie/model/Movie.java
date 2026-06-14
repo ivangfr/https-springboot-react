@@ -1,6 +1,5 @@
 package com.ivanfranchin.moviesapi.movie.model;
 
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,13 +15,4 @@ public class Movie {
 
   @Column(name = "movie_year")
   private Integer year;
-
-  public static Movie from(AddMovieRequest addMovieRequest) {
-    Movie movie = new Movie();
-    movie.setImdbId(addMovieRequest.imdbId());
-    movie.setTitle(addMovieRequest.title());
-    movie.setDirector(addMovieRequest.director());
-    movie.setYear(addMovieRequest.year());
-    return movie;
-  }
 }

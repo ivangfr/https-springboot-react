@@ -6,7 +6,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
 import com.ivanfranchin.moviesapi.movie.model.Movie;
 import java.util.List;
@@ -29,7 +28,12 @@ class MovieServiceImplTests {
   // -- helpers --
 
   private Movie buildMovie(String imdbId) {
-    return Movie.from(new AddMovieRequest(imdbId, "Resident Evil", "Paul W.S. Anderson", 2002));
+    Movie movie = new Movie();
+    movie.setImdbId(imdbId);
+    movie.setTitle("Resident Evil");
+    movie.setDirector("Paul W.S. Anderson");
+    movie.setYear(2002);
+    return movie;
   }
 
   // -- getMovies --

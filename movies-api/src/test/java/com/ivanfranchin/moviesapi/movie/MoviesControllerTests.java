@@ -33,7 +33,12 @@ class MoviesControllerTests {
   // -- helpers --
 
   private Movie buildMovie(String imdbId) {
-    return Movie.from(new AddMovieRequest(imdbId, "Resident Evil", "Paul W.S. Anderson", 2002));
+    Movie movie = new Movie();
+    movie.setImdbId(imdbId);
+    movie.setTitle("Resident Evil");
+    movie.setDirector("Paul W.S. Anderson");
+    movie.setYear(2002);
+    return movie;
   }
 
   // -- GET /api/movies --
@@ -93,7 +98,7 @@ class MoviesControllerTests {
   public void testAddMovieReturns201WithCreatedMovie() throws Exception {
     AddMovieRequest request =
         new AddMovieRequest("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002);
-    Movie movie = Movie.from(request);
+    Movie movie = request.toDomain();
     when(movieService.saveMovie(any(Movie.class))).thenReturn(movie);
 
     mockMvc

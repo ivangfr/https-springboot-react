@@ -2,7 +2,6 @@ package com.ivanfranchin.moviesapi.movie;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.movie.model.Movie;
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +20,17 @@ class MovieRepositoryTests {
   // -- helpers --
 
   private Movie persistMovie(String imdbId) {
-    Movie movie =
-        Movie.from(new AddMovieRequest(imdbId, "Resident Evil", "Paul W.S. Anderson", 2002));
+    Movie movie = buildMovie(imdbId);
     return entityManager.persistAndFlush(movie);
+  }
+
+  private Movie buildMovie(String imdbId) {
+    Movie movie = new Movie();
+    movie.setImdbId(imdbId);
+    movie.setTitle("Resident Evil");
+    movie.setDirector("Paul W.S. Anderson");
+    movie.setYear(2002);
+    return movie;
   }
 
   // -- findById --
@@ -52,8 +59,7 @@ class MovieRepositoryTests {
 
   @Test
   public void testSavePersistsMovieWithAllFields() {
-    Movie movie =
-        Movie.from(new AddMovieRequest("tt0120804", "Resident Evil", "Paul W.S. Anderson", 2002));
+    Movie movie = buildMovie("tt0120804");
 
     Movie saved = movieRepository.save(movie);
     entityManager.flush();
