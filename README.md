@@ -230,7 +230,7 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
 ## How to optimize PNG screenshots in documentation folder
 
-\[**Medium**\] [**How I Reduce GIF and Screenshot Sizes for My Technical Articles on macOS**](https://medium.com/itnext/how-i-reduce-gif-and-screenshot-sizes-for-my-technical-articles-on-macos-7fea331afc68)
+\[**Medium**\]: [**How I Reduce GIF and Screenshot Sizes for My Technical Articles on macOS**](https://medium.com/itnext/how-i-reduce-gif-and-screenshot-sizes-for-my-technical-articles-on-macos-7fea331afc68)
 
 ## Support
 
