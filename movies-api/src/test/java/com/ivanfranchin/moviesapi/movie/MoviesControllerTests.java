@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ivanfranchin.moviesapi.movie.dto.AddMovieRequest;
 import com.ivanfranchin.moviesapi.movie.exception.MovieNotFoundException;
 import com.ivanfranchin.moviesapi.movie.model.Movie;
@@ -20,13 +19,14 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import tools.jackson.databind.json.JsonMapper;
 
 @WebMvcTest(MoviesController.class)
 class MoviesControllerTests {
 
   @Autowired private MockMvc mockMvc;
 
-  private final ObjectMapper objectMapper = new ObjectMapper();
+  @Autowired private JsonMapper jsonMapper;
 
   @MockitoBean private MovieService movieService;
 
@@ -105,7 +105,7 @@ class MoviesControllerTests {
         .perform(
             post("/api/movies")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                .content(jsonMapper.writeValueAsString(request)))
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.imdbId").value("tt0120804"))
         .andExpect(jsonPath("$.title").value("Resident Evil"))
@@ -121,7 +121,7 @@ class MoviesControllerTests {
         .perform(
             post("/api/movies")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                .content(jsonMapper.writeValueAsString(request)))
         .andExpect(status().isBadRequest());
   }
 
@@ -133,7 +133,7 @@ class MoviesControllerTests {
         .perform(
             post("/api/movies")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                .content(jsonMapper.writeValueAsString(request)))
         .andExpect(status().isBadRequest());
   }
 
@@ -145,7 +145,7 @@ class MoviesControllerTests {
         .perform(
             post("/api/movies")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                .content(jsonMapper.writeValueAsString(request)))
         .andExpect(status().isBadRequest());
   }
 
@@ -158,7 +158,7 @@ class MoviesControllerTests {
         .perform(
             post("/api/movies")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                .content(jsonMapper.writeValueAsString(request)))
         .andExpect(status().isBadRequest());
   }
 
@@ -171,7 +171,7 @@ class MoviesControllerTests {
         .perform(
             post("/api/movies")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                .content(jsonMapper.writeValueAsString(request)))
         .andExpect(status().isBadRequest());
   }
 

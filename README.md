@@ -200,7 +200,7 @@ To stop `movies-api`, `movies-ui` and `movies-shell`, go to the terminal where t
 
 ## Code Formatting
 
-- **Spring Boot modules** (`movies-api` and `movies-shell`): Code is formatted using [Spotless](https://github.com/diffplug/spotless) with [Google Java Format](https://github.com/google/google-java-format).
+- **Spring Boot modules** (`movies-api` and `movies-shell`): Code is formatted using [Spotless](https://github.com/diffplug/spotless/tree/main/plugin-maven) with [Google Java Format](https://github.com/google/google-java-format).
 
   To check or apply formatting, make sure you are inside the module folder and run the following command:
 
