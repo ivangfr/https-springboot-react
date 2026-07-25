@@ -29,8 +29,7 @@
     <properties>
         <java.version>25</java.version>
         <spring-shell.version>4.0.2</spring-shell.version>
-        <spotless.version>3.4.0</spotless.version>
-        <google-java-format.version>1.35.0</google-java-format.version>
+        <spotless.version>3.8.0</spotless.version>
     </properties>
     <dependencies>
         <dependency>
@@ -83,7 +82,6 @@
                 <configuration>
                     <java>
                         <googleJavaFormat>
-                            <version>${google-java-format.version}</version>
                             <style>GOOGLE</style>
                         </googleJavaFormat>
                         <removeUnusedImports />
@@ -96,7 +94,7 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
-                        <phase>verify</phase>
+                        <phase>validate</phase>
                     </execution>
                 </executions>
             </plugin>
